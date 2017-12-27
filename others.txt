@@ -1,0 +1,26 @@
+Atlantis End of a World Birth of a Legend
+
+
+# 一些要处理的网站
+https://www.baidu.com/s?ie=utf-8&f=3&rsv_bp=1&tn=monline_4_dg&wd=%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1&oq=%25E6%2595%25B0%25E6%258D%25AE%25E5%25BA%2593%25E8%25AE%25BE%25E8%25AE%25A1%25E5%258E%259F%25E5%2588%2599&rsv_pq=ec69a7010002f488&rsv_t=ab1a9vQ7Yx03xk28GllzELvbmYJZ9sHkFjdfj2OlD5XiEgeIxSEwZf0vQNyr%2BdGgpf3H&rqlang=cn&rsv_enter=1&inputT=1775&rsv_sug3=111&rsv_sug1=52&rsv_sug7=100&rsv_sug2=0&rsv_sug4=7429
+https://www.cnblogs.com/kzloser/archive/2012/07/13/2589652.html
+http://blog.csdn.net/misakaqunianxiatian/article/details/48523797
+https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&ch=4&tn=78040160_19_pg&wd=mysql%20%E8%A1%A8%E6%9D%83%E9%99%90&oq=mysql%2520%25E6%259D%2583%25E9%2599%2590&rsv_pq=e2398c3a000035f0&rsv_t=c1097Y4neqV6dWaadEZJ0kIi555q1CmzTU%2Bg45SvE3Pt7a6uQlkA9ot1VpWDiFZqTHrccS8&rqlang=cn&rsv_enter=1&rsv_sug3=5&rsv_sug1=4&rsv_sug7=100&rsv_sug2=0&inputT=6&rsv_sug4=3171
+http://www.runoob.com/bootstrap/bootstrap-css-overview.html
+https://www.jetbrains.com/store/?fromMenu#edition=personal
+http://echarts.baidu.com/index.html
+http://echarts.baidu.com/demo.html#scatter-anscombe-quartet
+https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&tn=monline_4_dg&wd=spring%20%E4%BA%8B%E5%8A%A1%E9%85%8D%E7%BD%AE&oq=%2540transaction%2520%25E5%2586%2599%25E5%259C%25A8%25E5%2593%25AA&rsv_pq=c0dbc72d00001e8e&rsv_t=3de7i87V9wAHxEC6UFx%2B330BviXNF%2B5PVUMZxwIDhaiL%2Bx9QBj3z9Q%2FL%2B6%2FqIVzXnslX&rqlang=cn&rsv_enter=1&rsv_sug3=18&rsv_sug1=17&rsv_sug7=100&sug=spring%2520%25E4%25BA%258B%25E5%258A%25A1%25E9%2585%258D%25E7%25BD%25AE&rsv_n=1&bs=%40transaction%20%E5%86%99%E5%9C%A8%E5%93%AA
+http://blog.csdn.net/qh_java/article/details/51811533
+https://www.baidu.com/s?wd=%40transaction%20try%20catch&pn=10&oq=%40transaction%20try%20catch&tn=monline_4_dg&ie=utf-8&usm=1&rsv_pq=f808de86000054d1&rsv_t=5ca20yuTqkG4yo2h4gdwdR3dJJU8bYgYTc%2B%2BnOi8SBcCYVg9beofpRgujCoPJo6X3CCD&rsv_page=1
+http://blog.csdn.net/super_man_x/article/details/50886919
+https://projects.spring.io/spring-framework/
+https://docs.spring.io/spring/docs/4.0.2.RELEASE/spring-framework-reference/htmlsingle/
+https://docs.spring.io/spring/docs/4.0.2.RELEASE/spring-framework-reference/htmlsingle/#transaction-declarative
+https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&tn=monline_4_dg&wd=springMVC%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5&oq=springMV%2526lt%253B%25E6%259C%2580%25E4%25BD%25B3%25E5%25AE%259E%25E8%25B7%25B5&rsv_pq=f9507b9900003deb&rsv_t=022eTjWauO8FyVoIBRcllRZZayMwVUPCZqlzf3k7vmFCN2FlrpeY3EddkxZKQsvHC9yI&rqlang=cn&rsv_enter=0&rsv_sug=1
+http://blog.csdn.net/shut1k/article/details/49848589
+http://blog.csdn.net/wlwlwlwl015/article/details/50800991
+http://www.runoob.com/angularjs/angularjs-expressions.html
+http://www.runoob.com/bootstrap/bootstrap-tutorial.html
+https://www.thinkcmf.com/font/
+https://angular-translate.github.io/

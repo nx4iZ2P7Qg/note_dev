@@ -1,0 +1,3 @@
+# 强制将有误的推送回滚
+git reset --hard <commit ID号>
+git push -f origin master
