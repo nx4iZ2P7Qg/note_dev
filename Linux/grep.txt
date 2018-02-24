@@ -1,0 +1,7 @@
+-v 与模式不匹配的行
+-An after，显示匹配的后n行
+-Bn before，显示匹配前n行
+--color=auto 高亮
+
+-e 指定多个匹配项 grep -e 'A' -e 'B' abc.txt
+-e 以-开头的模式会出现解析问题，用-e可以正常使用 grep '-a' abc.txt(异常) grep -e '-a' abc.txt(正常)

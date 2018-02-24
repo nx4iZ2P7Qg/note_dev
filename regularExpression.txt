@@ -1,0 +1,28 @@
+正则表达式 / regular expression
+  基础basic 扩展extend
+  编码的影响
+    LANG=C    ，0 1 2 A B .. Z a b .. z
+    LANG=zh.TW，0 1 2 a A b B c C  .. z Z
+    不同的编码会影响[A-Z]的模式匹配，第一条符合POSIX标准
+  特殊的模式 character class syntax
+    [:alnum:] 0-9 a-z A-Z
+    [:alpha:] a-z A-Z
+    [:blank:] ' ' \t
+    [:cntrl:] CR LF Tab Del ..
+    [:digit:] 0-9
+    [:graph:] [^ \t]
+    [:lower:] a-z
+    [:print:] printable
+    [:punct:] punctuation symbol " ' ? ! ; : # $ ..
+    [:upper:] A-Z
+    [:space:] ' ' Tab CR ..
+    [:xdigit:] 0-9 a-f A-F
+  . 任意一个字符
+  * 前面的字符，0到多个
+
+  扩展符号
+    + 前面的字符，1到多个
+    ? 前面的字符，0到1个
+    | or
+    () 'g(la|oo)d'
+    ()+ 'A(xyz)+C'
