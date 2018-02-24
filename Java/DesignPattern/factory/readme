@@ -1,0 +1,35 @@
+http://www.tuicool.com/articles/JvYR7vJ
+在JDK中，也有很多使用工厂方法模式的代码。下面就介绍几个典型的用法。
+
+Collection中的iterator方法
+
+java.util.Collection 接口中定义了一个抽象的 iterator() 方法，该方法就是一个工厂方法。
+
+对于 iterator() 方法来说 Collection 就是一个根抽象工厂，下面还有 List 等接口作为抽象工厂，再往下有 ArrayList 等具体工厂。
+
+java.util.Iterator 接口是根抽象产品，下面有 ListIterator 等抽象产品，还有 ArrayListIterator 等作为具体产品。
+
+使用不同的具体工厂类中的 iterator 方法能得到不同的具体产品的实例。
+
+
+
+JDBC数据库开发
+
+在使用 JDBC 进行数据库开发时，如果数据库由MySQL改为Oracle或其他，则只需要改一下数据库驱动名称就可以，其他都不用修改（前提是使用的都是标准SQL语句）。或者在Hibernate框架中，更换数据库方言也是类似道理。
+
+连接邮件服务器框架
+
+如果需要设计一个连接邮件服务器的框架，那么就要考虑到连接邮件服务器有几种方式： POP3 、 SMTP 、 HTTP 。就可以定义一个连接邮件服务器接口，在此接口中定义一些对邮件操作的接口方法，把这三种连接方式封装成产品类，实现接口中定义的抽象方法。再定义抽象工厂和具体工厂，当选择不同的工厂时，对应到产生相应的连接邮件产品对象。采用这种工厂方法模式的设计，就可以做到良好的扩展性。比如某些邮件服务器提供了WebService接口，只需要增加一个产品类和工厂类就可以了，而不需要修改原来代码。
+
+其他工厂方法
+
+除上面介绍的典型的使用工厂方法模式的用法外，在JDK中还有几处使用了工厂方法来创建对象。其中包括：
+
+java.lang.Proxy#newProxyInstance()
+java.lang.Object#toString()
+java.lang.Class#newInstance()
+java.lang.reflect.Array#newInstance()
+java.lang.reflect.Constructor#newInstance()
+java.lang.Boolean#valueOf(String)
+java.lang.Class#forName()
+读者感兴趣可以找出来看一看，这些方法都是用于返回具体对象。上面大部分方法都和反射有关，因为反射创建对象的过程比较复杂，封装成工厂方法更易于使用。
