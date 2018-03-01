@@ -1,0 +1,19 @@
+二进制单位 Kilo Mega Giga Tera Peta Exa Zetta
+用GB表示十进制，GiB表示二进制
+
+早期许多设备要通过北桥与CPU交换数据，因此就有所谓的前端总线（FSB），但CPU速度太快，为了与北桥兼容，产生了外频的概念，同时内部用倍频来加速
+现在北桥被整合到CPU内部，CPU无需考虑外频
+
+CPU内的内存控制器决定了内存的频率，如果是1600MHz，64位的架构，1秒可以传输1600MHz * 64bit * 1s = 1600MHz * 8Byte * 1s = 12.8GByte数据
+
+磁区 sector 圆上的一段
+磁轨 track 圆
+磁柱 cylinder 多盘的同track
+
+硬盘通常由外圈track向内圈写入数据，因为外圈的sector比较从，磁盘转一圈能取到更多数据
+
+原来的sector一般是512Byte，现在有些大容量盘是4KByte
+
+MSDOS通过磁柱号码分区，GPT用磁区号码分区
+
+SATA3.0频宽6Gbit/s，其中数据8bit，校验位2bit，这里1Byte = 10bit，所以速度为6Gbit/s / 10 = 600MByte/s

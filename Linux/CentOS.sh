@@ -11,3 +11,6 @@ cd /run/media/dexter/
 ./VBoxLinuxAddition.sh
 # 缺少gcc
 yum install gcc
+
+# 安装python3与yum
+http://blog.csdn.net/miaoqiucheng/article/details/73322937

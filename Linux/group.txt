@@ -1,0 +1,5 @@
+# 将用户dexter添加到vboxsf组中
+usermod -G vboxsf -a dexter
+
+# 查看用户abc属于哪些组
+groups abc
