@@ -1,0 +1,27 @@
+历史
+    问世前，前端数据要发送到后台验证，考虑到网速，前端校验能提高不少体验
+    之后，js成为浏览器的特色功能
+    当前的js，可以与浏览器的窗口，以及窗口内容各方面进行交互
+    功能全面，有闭包，匿名函数等
+    js从简单的语言发展成强大的语言，比较出乎意料，此语言既简单--片刻就能上手，又复杂--真正掌握需要数年
+
+实现
+    一个完整的js实现，应该包含3个部分
+        核心 ECMAScript
+        文档对象模型 DOM
+        浏览器对象模型 BOM
+    目前20180305，主流浏览器应该至少支持到ECMAScript5
+    ECMAScript与浏览器没关系，语言并不包含输入与输出，它只定义了基础，在此基础上可以构建更完善的脚本语言。浏览器是ECMAScript实现的宿主之一，宿主不仅提供基本实现，同时也提供扩展，以便语言与环境交互。其他宿主环境包含Node和Flash。
+    为什么使用DOM，友商在DHTML方面谈不好，由W3C规划DOM
+    DOM1包含DOM CORE与DOM HTML
+    DOM2包含DOM Views, DOM Events, Dom Style, DOM Traversal and Range
+    DOM3包含DOM Load and Save, DOM Validation, 支持XML1.0规范。
+    DOM0并不存在，是一个历史参照点，具体指IE4.0与NN4.0最初支持的DHTML。
+    其他DOM标准，以下都是基于XML
+        SVG(Scalable Vector Graphic)1.0
+        MathML(Mathematical Markup Language)1.0
+        SMIL(Synchronized Multimedia Integration Language)
+    浏览器对DOM的支持
+        猜测目前应该支持到100%的DOM
+    BOM没有相关的标准，直到HTML5，没有标准的时候，有些事实的标准比如window，但各方实现方式不同
+    Mozilla是Netscape的"继承人"
