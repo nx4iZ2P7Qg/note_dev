@@ -1,0 +1,49 @@
+ECMAScript5引入了严格模式(strict mode)，在脚本顶部添加如下代码"use strict";
+无论用var还是let定义一个变量，初始值都是undefined
+5种基本类型：Undefined, Null, Boolean, Number, String，一种复杂类型Object，不支持自定义类型
+typeof是一个操作符，可以拿到引用和字面量的类型，除了上面5种，还有function
+    typeof null == object
+    function是一种对象，不是数据类型，但函数比较特殊，有必要用typeof与其他作区分
+Undefined类型只有一个值undefined，对undefined值的变量，或者未声明的变量，进行typeof，都会得到undefined的值
+Null类型只有一个值null，typeof null会得到object
+    实际上undefined派生自null，null == undefined返回true
+用Boolean()转换其他类型时，结果如下
+    类型        true    false
+    String     非空串     空串
+    Number     非零      0和NaN
+    Object     任何      null
+    Undefined  n/a      undefined
+范围
+    js能保存的最小的数值保存在Number.MIN_VALUE，大多数浏览器中是5e-324
+    js能保存的最大的数值保存在Number.MAX_VALUE，大多数浏览器中是1.7976931348623157e+308
+    如果某次计算超出以上两范围，正数就被转化为Infinity，负数被转化为-Infinity
+    Infinity无法参与计算
+    想确认一个数是否在MIN_VALUE与MAX_VALUE之间，用isFinite()函数
+    Number.NEGATIVE_INFINITY与Number.POSITIVE_INFINITY中分别保存了-Infinity与Infinity
+其他语言被0除会出错，但在ECMAScript中，会返回Infinity，特别的0 / 0返回NaN
+NaN与其他数的操作会返回NaN，NaN与任何值不相等，包括本身，用isNaN()函数判断
+如果用isNaN()判断对象，会首先调用对象的valueOf()方法，然后判断返回值a是否可以转换为数值，如果不能，调用a.toString()，再测试返回值b
+非数值转换成数值用Number(), parseInt(), parseFloat()
+其中Number()的转换规则
+    true -> 1, false -> 0
+    null -> 0
+    undefined - > NaN
+    "" -> 0
+    特殊字符串 -> NaN
+    对象 -> 调用valueOf()方法，按前面的方法转换返回值a，如果a是NaN，继续调用对象的toString()方法，继续判断
+parseInt()，建议始终使用第二个参数，即转换基数
+parseFloat()，只解析10进制
+String类型用"或'包围，编码为16位的unicode，用.length访问长度，多字节字符的.length拿不到正确长度，比如𠮷，要用自定义函数
+String()函数用来转换将任何类型的值转换为字符串
+    如果有toString()方法，则返回该方法的结果
+    如果没有，null返回"null"，undefined返回"undefined"
+    + "" 转换最方便
+Object实例的属性与方法
+    constructor，用于创建当前对象的函数。
+    hasOwnProperty(propertyName)，检查给定的属性在当前实例中(而不是原型中)是否存在
+    isPrototypeOf(object)，用于检查传入的对象是否是传入对象的原型
+    propertyIsEnumerable(propertyName)，查检属性是否能使用for-in
+    toLocalString()
+    toString()
+    valueOf()
+    ECMAScript中的对象并不一定适用于DOM和BOM中的对象，DOM和BOM中的对象，可能会，也可能不会继承Object
