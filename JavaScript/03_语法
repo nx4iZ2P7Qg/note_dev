@@ -1,4 +1,4 @@
-ECMAScript5引入了严格模式(strict mode)，在脚本顶部添加如下代码"use strict";
+ECMAScript5引入了严格模式(strict mode)，在脚本顶部添加如下代码"use strict"; 严格模式对容易出错的地方作了限制
 无论用var还是let定义一个变量，初始值都是undefined
 5种基本类型：Undefined, Null, Boolean, Number, String，一种复杂类型Object，不支持自定义类型
 typeof是一个操作符，可以拿到引用和字面量的类型，除了上面5种，还有function
@@ -52,3 +52,10 @@ ECMAScript所有数值都以IEEE-754 64位格式存储，位操作会转换成32
 非~ 与& 或| 异或^ 左移<< 右移>> 无符号右移>>>
 &&可以应用于任何类型，如果有一个操作数不是布尔值，返回值不一定是布尔
 var o = a || b; 如果a不为空，那么o == a，如果为空o == b，这个语句经常用来赋值
+a == b，只有a和b指向同一对象时才返回true
+=== 判断前不转换类型，推荐使用全等符号判断
+不建议使用with语句
+switch在判断值时使用的全等
+arguments[0]与第一个参数的值是同步的，但储存空间独立
+未指定返回值的函数返回了一个特殊的undefined值
+ECMAScript中没有函数签名
