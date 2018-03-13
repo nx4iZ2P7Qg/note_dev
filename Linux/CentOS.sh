@@ -14,3 +14,6 @@ yum install gcc
 
 # 安装python3与yum
 http://blog.csdn.net/miaoqiucheng/article/details/73322937
+
+# 重启gnome
+alt + F2, r
