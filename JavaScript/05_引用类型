@@ -1,0 +1,34 @@
+var person = {}等同于var person = new Object();
+函数可以接收json作为参数
+访问对象属性除了通用的.，还有[]方法，后者的优点是可以用变量来访问属性
+Array的length属性不是只读的，可以从发问移除项，或新增undefined项，使用a[a.length] = b在尾部添加新项b
+    数组最多可以包含近43亿项，超出会异常，如果数据内项过多，会导致响应时间变长
+    Array.isArray()用来判断是否是数据对象
+    数组用push()和pop()来模拟栈，前者返回数据长度，后者返回移除的值
+    用push()和shift()来模拟队列，用unshift()和pop()来模拟反向队列
+    reverse()用来反转
+    sort()用来排序，调用各项的toString()后，升序，这个方法接收一个比较函数，如果第一参数"应该"位于第二个之前，返回负数，"应该"位于第二个参数之后，返回正数，相等返回0
+    concat()，拼接数据或其他对象
+    slice()，截取数组
+    splice()，编辑数组，删除添加替换，第一个参数是起始位置，第二个参数是删除数量
+    indexOf(), lastIndexOf()，使用===定位项，找不到返回-1
+    迭代
+        every(), 各项都true，返回true
+        filter(), 返回符合条件的数据，numbers.filter(function(item, index, array) {return item > 2};);
+        forEach(), for循环，没有返回值
+        map(), 返回数组，每项处理
+        some()，某项或多项true，返回true
+    归并，迭代所有值，返回最终值，reduce()，reduceRight()，values.reduce(function(prev, cur, index, array) {return prev + cur;});第一次迭代发生在数据第二项上
+Date
+    Date.parse()，new Date('2018-01-12 15:09:36')，ECMAScript没有定义字符格式
+    Date.UTC()，new Date(Date.UTC(2018, 2, 12, 15, 10, 05));其中月份以0开始
+    ECMAScript5添加了Date.now()，之前的版本可以使用+ new Date();初始化出来的是同样的毫秒数
+    toString()和toLocalString()在不同的浏览器中会返回不同的信息，通常前者带时区
+    valueOf()返回毫秒数
+RegExp
+    / pattern / flags;其中flags可以是g, i, m(多行)，这3个值可以同时复数出现
+    new RegExp()的参数是字符串，有时要双重转义不方便，推荐上面的形式
+    ECMAScript3中的字面量共享一个RegExp实例，使用构造函数是多个实例，ECMAScript5规定，字面量每次创建新的实例
+    常用的方法为exec()与test()
+Function
+    ECMAScript中函数是对象，是Function类型的实例
