@@ -32,3 +32,32 @@ RegExp
     常用的方法为exec()与test()
 Function
     ECMAScript中函数是对象，是Function类型的实例
+    函数名是指针变量
+    arguments, this都是函数内特殊对象，arguments有一个属性callee，指向此arguments对应的函数，this含义与java类似，只有全局的情况下，this指向window
+    caller，调用当前函数的函数引用
+    严格模式下，访问arguments.callee会报错
+    ECMAScript5定义了arguments.caller，严格模式下会报错，非严格模式下是undefined，没什么用的东西，主要是为了与函数的caller区分开
+    严格模式下不能为函数的caller赋值
+    函数的length属性表示希望接收的参数个数
+    函数的prototype属性，ECMAScript的引用类型，都在prototype中保存了所有实例方法，ECMAScript5中，prototype属性不可枚举
+    每个函数包含两个非继承来的方法，apply()和call()，都是在特定的作用域中调用函数，实际上等于设置函数体内的this值，这两个方法可以扩充函数作用域，让对象与方法解耦
+    ECMAScript5中定义了bind()
+    函数继承的toString()可以方便调试
+包装类型
+    Boolean, Number, String，引用类型与基本包装类型的主要区别就是生存期，这3个自动创建的包装类的对象，只存在一行代码执行的瞬间，最好不要随便调用这些构造方法
+    建议不要使用Boolean
+    Number的有toFix()来指定小数位位数，toExponential()以指数方式输出，toPrecision()会以待处理的数值决定调用前面哪个方法，只接受一个位数参数
+    String提供slice(), substr(), substring()
+    match()方法基本与RegExp的exec()方法相同，replace()用来替换字符串
+    split()，跨浏览器兼容问题参考http://blog.stevenlevithan.com/archives/cross-browser-split
+    fromCharCode()与charCodeAt()相反
+单体内置对象
+    Object, Array, String, Global, Math
+    不属性任何其他对象的属性和函数，都属于Global对象的属性。
+    Global包括encodeURI()和encodeURIComponent()对URI编码，以便发送给浏览器，有效的URI不能包含空格，这两个方法可以用特殊的utf-8编码替代所有无效字符
+    这两个方法的主要区别在于，前者用于整个URI，后者用于URI中的某一段，前者不会对属于URI的特殊字符编码，如冒号，斜线，问号，井号，后者会对任何非标准字符编码
+    对应方法为decodeURI()和decodeURIComponent()
+    eval()，严格模式下，外部无法访问eval()中创建的变量或函数，也无法为eval赋值
+    ECMAScript没有指出如何访问Global，浏览器将其作为window对象的一部分实现了，因此Global的变量和函数，用window访问
+    或者使用var global = function() {return this;}();获得Global的引用
+    Math.max(), Math.min()
