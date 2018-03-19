@@ -60,4 +60,6 @@ Function
     eval()，严格模式下，外部无法访问eval()中创建的变量或函数，也无法为eval赋值
     ECMAScript没有指出如何访问Global，浏览器将其作为window对象的一部分实现了，因此Global的变量和函数，用window访问
     或者使用var global = function() {return this;}();获得Global的引用
-    Math.max(), Math.min()
+    Math.max(), Math.min()，要找到数组中的最大或最小值，用Math.max.apply(Math, array);
+    Math.ceil(), Math.floor(), Math.floor()
+    Math.random(), Math.floor(Math.random() * 可能值的总数 + 第一个可能的值)
