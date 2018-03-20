@@ -1,0 +1,82 @@
+理解对象
+    对象属性的类型
+        数据属性
+            [[Configurable]]，能否通过delete删除，能否修改属性特性，能否修改为访问器属性
+            [[Enumerable]]，能否通过for-in循环
+            [[Writable]]， 能否修改属性值
+            [[Value]]，属性的数据值
+            修改特性要用到ECMAScript的Object.defineProperty()方法
+            Object.defineProperty(person, "name", {
+                configurable: false,
+                value: "Nicholas"
+            });
+            如果configurable被定义为false，再修改其他特性都会报错，除了(writable)
+        访问器属性
+            包含setter, getter，但都不是必须
+            [[Configurable]]，能否通过delete删除
+            [[Enumerable]]，
+            [[Get]]，读取属性时调用的函数，默认undefined
+            [[Set]]
+            不能直接定义，必须用Object.defineProperty()
+            ECMAScript5定义了Object.defineProperties()方法，可以批量
+        ES5定义了Object.getOwnPropertyDescriptor()，可以取得给定属性的描述符，适用任何对象，包括DOM, BOM
+创建对象
+    工厂模式，无法识别对象类型
+    构造函数模式，方法不是同一个Function的实例。如果把方法抽象到全局，就没有封装。
+        构造函数与其他函数的唯一区别，在于调用方式不同，任何函数，通过new操作符，都会变成构造函数
+    原型模式
+        每个函数都有一个prototype属性，是一个指针，指向函数的原型对象，原型对象包含一个constructor，指向函数，比如Person.prototype.constructor指向Person
+        对象的[[prototype]]无法访问，但可以用isPrototypeOf()来确认对象之间是否存在这种关系，Person.prototype.isPrototypeOf(person1)
+        ES5提供Object.getPrototypeOf()，这个方法返回[[prototype]]的值，Object.getPrototypeOf(person1) == Person.prototype
+        代码读取某个对象的某个属性时，搜索对象实例，如果没有找到，继续搜索原型对象
+        使用isOwnProperty()可以判断属性是否存在对象中，person1.hasOwnProperty("name");
+        ECMAScript5的Object.getOwnPropertyDescriptor()方法只能用于实例属性，要取得原型属性的描述符，必须直接在原型对象上调用Object.getOwnPropertyDescriptor()方法。
+        "name" in person1，只要name存在，无论在哪里，都返回true，使用hasOwnProperty()就去和in操作符，就可以确定该属性是在对象中，还是原型中
+        使用for-in循环时，返回的是所有能够通过对象访问的，可枚举的属性，其中包含对象中的，也包含原型中的，即使将原型中的[[Enumerable]]标记为false，因为规定，所有开发人员定义的属性都可枚举
+        要取得对象上所有可枚举的实例属性，可以用ES5提供的object.keys()，如果要取得所有属性，用object.getOwnPropertyNames()
+        原型的重要性不止于自定义类型，Object, Array, String等原生的都是在构造函数的原型上定义了方法，可以修改原生类型，但不建议
+        在构造对象时，原型模式比较适合函数，但不适合属性，尤其是引用类型
+    组合使用构造函数与原型
+        最常见的办法，用构造函数定义实例属性，用原型定义方法与共享属性
+        function Person(name, age, job) {
+            this.name = name;
+            this.age = age;
+            this.job = job;
+            this.friends = ["Shelby", "Court"];
+        }
+        Person.prototype = {
+            constructor : Person,
+            sayName : function() {
+                alert(this.name);
+            }
+        }
+    动态原型模式
+        可以通过检查某个应该存在的方法是否有效，来决定是否需要初始化原型
+        function Person(name, age, job) {
+            this.name = name;
+            this.age = age;
+            this.job = job;
+            if (typeof this.sayName != "function") {
+                Person.prototype.sayName = function() {
+                    alert(this.name);
+                };
+            }
+        }
+    寄生构造函数模式
+    稳妥构造函数模式
+继承
+    ES中没有函数签名，没有接口继承，只有实现继承，用原型链实现，基本思想是，让原型对象等于另一个类型的实例
+    用instanceOf操作符，只要原型链中出现相应的构造函数，结果就返回true
+    用isPrototypeOf()，只要是原型链中出现过的原型，也返回true
+    给原型添加方法的代码一定要放在替换原型的语句后
+    在通过原型链实现继承时，不能使用对象字面量创建原型方法，这样会重写原型链
+    原型链的问题一，因为原型链的继承实际上用到了超类的对象，这对象中的引用类型属性会变成原型属性，要注意
+    原型链的问题二，在创建子类型的实例时，不能向超类的构造函数中传参，会影响其他对象
+    结论是实践中很少单独使用原型链
+    借用构造函数SuperType.call(this)，可以传递参数，但也会有构造函数的问题--函数复用
+    组合继承，用原型链实现原型属性和方法的继承，借用构造函数来实现对属性的继承，成为js中最常用的继承模式，而且instanceOf与isPrototypeOf()也能识别对象
+    原型式继承，没有严格意义上的构造函数，本质上是对传入的对象执行了一次浅复制，ES5中规范了这种继承，用Object.create()
+    寄生式继承
+    寄生组合式继承
+        组合继承是最常见的模式，但也有问题，就是任何时候都会两次调用超类的构造函数
+        寄生组合式继承的思路是：不必为了指定子类型的原型而调用超类的构造函数，只需要超类原型的一个副本，避免了子类原型(超类对象)下不必要的属性创建，被认为是最理想的继承
