@@ -60,5 +60,26 @@ public class Test {
         LocalTime localTime = new Time(System.currentTimeMillis()).toLocalTime();
         Time time = Time.valueOf(LocalTime.now());
 
+        // java.util.Date与LocalDateTime的转换
+        // java.util.Date其实不像名字看起来那样，是一个真正意义上的date，而是时间轴(time-line)上的一个点(instant)，实际保存了一个long
+        //   型的毫秒数(从1970-01-01T00:00Z (midnight at the start of 1970 GMT/UTC))
+        // java.util.Date并没有时区的概念，toString()输出的时区使用的是java的默认时区
+        // Instant也没有时区，所以转型成LocalDateTime时需要指定一个
+        Date in = new Date();
+        LocalDateTime ldt = LocalDateTime.ofInstant(in.toInstant(), ZoneId.systemDefault());
+        Date out = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
+        // ZoneDateTime可以直接转型成Instant
+        ZonedDateTime zdt = ldt.atZone(ZoneId.systemDefault());
+        Date output = Date.from(zdt.toInstant());
+        // LocalDateTime转型成ZoneDateTime有时会有意外的问题(This is because not every local date-time exists due to
+        //   Daylight Saving Time. In autumn/fall, there is an overlap in the local time-line where the same local
+        //   date-time occurs twice. In spring, there is a gap, where an hour disappears.See the Javadoc of
+        //   atZone(ZoneId) for more the definition of what the conversion will do.
+        //
+        // Summary, if you round-trip a java.util.Date to a LocalDateTime and back to a java.util.Date you may end up
+        //   with a different instant due to Daylight Saving Time.)
+
+        // LocalDate to java.util.Date
+        Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
 }

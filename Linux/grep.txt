@@ -5,3 +5,9 @@
 
 -e 指定多个匹配项 grep -e 'A' -e 'B' abc.txt
 -e 以-开头的模式会出现解析问题，用-e可以正常使用 grep '-a' abc.txt(异常) grep -e '-a' abc.txt(正常)
+
+基础正则表达式(basic regular expressions)中元字符 ? + { | ( ) 变成普通字符，没有特殊含义，需要前面加斜线实现
+传统的egrep不支持 { 元字符，有些egrep使用 \{ 实现，所以跨平台的脚本，不要在grep -E中使用 {，而要使用 [{]
+GNU grep -E 为了与传统兼容，认为如果 { 没有成对出现就是普通字符，POSIX允许这样操作，但跨平台脚本要避免使用
+
+参考: http://www.gnu.org/software/grep/manual/

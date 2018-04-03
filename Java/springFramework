@@ -1,0 +1,15 @@
+事务控制
+    在待控制的service接口上使用@Transactional注释
+    在spring配置文件中加入
+        <!--服务包事务处理-->
+    	<bean id="servicePackageSyncService"
+    	      class="com.iris.webservice.impl.ServicePackageSnycServiceImpl"/>
+    	<!--物料同步，逐条提交事务-->
+    	<bean id="materialSyncItemByItemCommitService"
+    		  class="com.iris.webservice.impl.MaterialSyncItemByItemCommitServiceImpl"/>
+        <!--事务管理器-->
+    	<tx:annotation-driven transaction-manager="transactionManager"/>
+    	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    		<property name="dataSource" ref="dataSource"/>
+    	</bean>
+    spring默认回滚RuntimeException，回滚后异常由java继续处理
