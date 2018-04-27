@@ -1,4 +1,4 @@
-# 将用户dexter添加到vboxsf组中
+# 将用户dexter添加到vboxsf组中，注销后生效
 usermod -G vboxsf -a dexter
 
 # 查看用户abc属于哪些组
