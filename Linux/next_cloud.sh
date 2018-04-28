@@ -114,3 +114,6 @@ https://help.nextcloud.com/t/howto-change-move-data-directory-after-installation
 
 # 也许有用的进阶安装向导
 https://www.c-rieger.de/nextcloud-installation-guide-advanced/#excursion41
+
+# 在nextcloud的目录下执行，可以重新扫描data目录下的文件到云盘数据库
+sudo -u apache php console.php files:scan --all
