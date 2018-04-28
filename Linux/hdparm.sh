@@ -28,3 +28,11 @@ sudo hdparm -M /dev/sdb
 sudo smartctl -i -n standby /dev/sdb
 
 # 使用udev让设置持续生效
+touch /etc/udev/rules.d/50-hdparm.rules
+# 内容为
+# 设置硬盘休眠时间
+ACTION=='add', SUBSYSTEM=='block', KERNEL=="sdb", RUN+="/usr/bin/hdparm -S 242 /dev/sdb"
+ACTION=='add', SUBSYSTEM=='block', KERNEL=="sdc", RUN+="/usr/bin/hdparm -S 242 /dev/sdc"
+
+# 使新的rule生效
+sudo udevadm control --reload
