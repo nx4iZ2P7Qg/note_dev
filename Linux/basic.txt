@@ -17,3 +17,18 @@ CPU内的内存控制器决定了内存的频率，如果是1600MHz，64位的�
 MSDOS通过磁柱号码分区，GPT用磁区号码分区
 
 SATA3.0频宽6Gbit/s，其中数据8bit，校验位2bit，这里1Byte = 10bit，所以速度为6Gbit/s / 10 = 600MByte/s
+
+
+
+
+
+
+查看linux distribution
+    uname -a
+    cat /proc/version
+    cat /etc/issue
+    lsb_release -a
+
+禁止响应ping
+    echo 'net.ipv4.icmp_echo_ignore_all=1' >> /etc/sysctl.conf
+    sysctl -p

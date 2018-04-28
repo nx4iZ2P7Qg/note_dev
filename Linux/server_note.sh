@@ -70,3 +70,22 @@ win10端挂载
   lastb
 查看登录日志
   vi /var/log/secure
+
+
+修改sshd的默认端口
+    修改/etc/ssh/sshd_config
+    Port=22
+    Port=30000
+    安装selinux管理工具
+    yum provides semanage
+    yum install policycoreutils-python
+    添加selinux规则
+    semanage port -a -t ssh_port_t -p tcp 30000
+    查看添加的规则
+    semanage port -l | grep ssh
+    配置防火墙，默认的ssh service不能使用，要
+    firewall-cmd --permanent --zone=public --add-port=30000/tcp
+    firewall-cmd --reload
+    重启sshd
+    systemctl restart sshd.service
+    最后删除端口22的相关规则

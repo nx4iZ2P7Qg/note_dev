@@ -20,3 +20,4 @@
     listen_address = '*'
     # 修改/var/lib/pgsql/data/pg_hba.conf，添加一行
     host all all 0.0.0.0/0 md5
+# 防火墙
