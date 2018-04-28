@@ -100,6 +100,11 @@ semanage port -l | grep http
 #         <IfModule mod_dav.c>
 #             Dav off
 #         </IfModule>
+#	
+#	  # 用来防止http header提示，强制所有流量走https 
+#	  <IfModule mod_headers.c>
+#             Header always set Strict-Transport-Security "max-age=15552000; includeSubDomains"
+#         </IfModule>
 #
 #         SetEnv HOME /var/www/nextcloud
 #         SetEnv HTTP_HOME /var/www/nextcloud
