@@ -145,3 +145,15 @@ sudo setsebool -P smbd_anon_write on
 #
 # 问题在于httpd写入权限过大，不过这和初始要求完全相同
 # 考虑将data的内容分开，一部分只读比较合适
+
+# 缓存配置
+# 修改nextcloud/config/config.php，添加以下内容
+'memcache.locking' => '\OC\Memcache\Redis',
+  'memcache.local' => '\OC\Memcache\Redis',
+  'redis' => array(
+     'host' => 'localhost',
+     'port' => 6379,
+      ),
+# 修改/etc/hosts，让localhost指向127.0.0.1
+# 同时让httpd能访问redis端口，注意-m参数，不是-a
+semanage port -m -t http_port_t -p tcp 6379
