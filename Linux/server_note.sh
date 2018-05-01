@@ -56,6 +56,8 @@ win10端挂载
   smbpasswd -a tecmint
 设置seLinux
   chcon -t samba_share_t /srv/samba/secure
+# 如果是在tstab中挂载的目录，不能手动设定seLinux，要在fstab中指定context
+/dev/sdj1  /mnt/FLASHKingstonCenton  ntfs context=system_u:object_r:samba_share_t:s0 0 2
 配置/etc/samba/smb.conf
   [Secure]
   comment = Secure File Server Share
