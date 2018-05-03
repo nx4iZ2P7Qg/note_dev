@@ -122,6 +122,12 @@ https://www.c-rieger.de/nextcloud-installation-guide-advanced/#excursion41
 
 # 在nextcloud的目录下执行，可以重新扫描data目录下的文件到云盘数据库
 sudo -u apache php console.php files:scan --all
+# 有时刚刚扫描文件后，会遇到You don't have permission to upload or create files here的问题
+# 一般是文件夹权限，user与group都是apache，data目录有写权限
+# 有时一切正常，但还是有这个问题，可以将上面的扫描命令再执行一遍，就正常了
+# 很明显的数据库保存了目录的权限，所以在
+sudo chown apache:apache -R data
+# 后，还需要刷新一次，就可以正常上传了
 
 # samba, selinux共存的问题
 #
@@ -148,12 +154,16 @@ sudo setsebool -P smbd_anon_write on
 
 # 缓存配置
 # 修改nextcloud/config/config.php，添加以下内容
-'memcache.locking' => '\OC\Memcache\Redis',
+  'memcache.locking' => '\OC\Memcache\Redis',
   'memcache.local' => '\OC\Memcache\Redis',
   'redis' => array(
      'host' => 'localhost',
      'port' => 6379,
-      ),
+   ),
 # 修改/etc/hosts，让localhost指向127.0.0.1
 # 同时让httpd能访问redis端口，注意-m参数，不是-a
 semanage port -m -t http_port_t -p tcp 6379
+
+# 使用web interface上传文件
+sudo setsebool -P httpd_unified 1
+# 但安全原因又建议关闭此功能
