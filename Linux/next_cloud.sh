@@ -163,7 +163,10 @@ sudo setsebool -P smbd_anon_write on
 # 修改/etc/hosts，让localhost指向127.0.0.1
 # 同时让httpd能访问redis端口，注意-m参数，不是-a
 semanage port -m -t http_port_t -p tcp 6379
-
 # 使用web interface上传文件
 sudo setsebool -P httpd_unified 1
 # 但安全原因又建议关闭此功能
+# 删除
+sudo semanage port -d -t http_port_t -p tcp 6379
+setsebool -P httpd_execmem 1
+setsebool -P httpd_can_network_connect 1
