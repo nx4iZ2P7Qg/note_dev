@@ -1,0 +1,63 @@
+参考：https://javarevisited.blogspot.com/2015/05/top-10-java-multithreading-and.html
+
+并发编程与测试都不容易，虽然java提供了很多东西，但最终还是由个人的努力及专业程度来保证没问题的并发代码
+以下这些并发与多线程最佳实践是一些众所周知的提示，可以助你写出更好的并发代码
+有些提示你可能熟悉，但也值得反复地看与重新熟悉
+这些提示来自于我自己的学习与使用，并且受到《Effective Java》与《Java Concurrent in Practice》，我建议开发人员将后者读两遍
+是的，两遍。并发让人犯迷糊并且难以理解，像递归一样
+
+使用并发的唯一目的是提高程序扩展性(scalable)与性能(faster)，当然正确性是前提
+
+1.使用本地变量
+不要使用类变更或实例变量(属性?)，有时开发人员用实例属性来节省内存且重用，觉得本地变量浪费内存。一个例子，类中定义collection，并且用clear()重用，这会在无状态的类中加入一个有共享状态。无状态的类可以用来并发。
+public class ConcurrentTask{
+    private static List temp = Collections.synchronizedList(new ArrayList());
+
+    @Override
+    public void execute(Message message){
+        //I need a temporary ArrayList here, use local
+        //List temp = new ArrayList();
+
+        //add something from Message into List
+        temp.add("message.getId()");
+        temp.add("message.getCode()");
+
+        //combine id and code store result back to message
+        temp.clear(); // Let's resuse it
+    }
+}
+在上面的例子中，execute方法被多线程调用，其中使用到了temp集合，在原来的代码中，静态list被使用了，开发者的本意是在使用完毕后清空，他认为代码是安全的因为CopyOnWriteArrayList是线程安全的，但他没有意识到线程会看到其他线程写入到temp中的数据，list中的同步功能没法保证方法的不变性(invariant)
+问题在于并发时一个线程的消息会在clear()之前进入另外一个线程
+解决办法
+将temp.add()和temp.clear()放在一个同步块中，这样代码块变成单线程的，影响性能
+使用本地collection，会占用更多空间，不用担心同步问题，代码可读性更好
+
+2.使用不可变类
+String, Integer和其他包装类极大的简化了并发编程，因为不用担心他们的状态
+不可变类的实例创建后，不会改变，任何的改变会产生新的实例，原变量不动
+
+3.最小化锁范围(lock scope)
+锁中的代码不会并行执行，如果在锁中的代码超过阿姆达尔定律(Amdahl's law)的5%，你的代码性能提升将不会超过20倍。尝试只锁关键步骤
+
+4.使用线程池
+除去线程的创建销毁等操作，把线程样板代码与业务合并在一起也降低代码可读性，线程操作是框架级的工作，java有Executor framework
+
+5.使用同步工具而不是wait(), notify()
+总是使用线程同步工具，使用BlockingQueue实现生产者-消费者比使用wait, notify要简单得多，熟悉java.util.concurrent包
+
+6.使用BlockingQueue实现生产者-消费者设计
+不像Exchanger synchronization只能处理单一的生产者-消费者，BlockingQueue可以实现多个
+
+7.使用并发集合而不是同步集合
+如果读取比写入多，ConcurrentHashMap比synchronized HashMap或HashTable性能，扩展性都好。并且并发集合使用了新的锁机制且可以使用JVM和硬件提供的本地并发结构。同样，在读取占多数情况时，考虑使用CopyOnWriteArrayList，而不是synchronized List
+
+8.使用semaphore定义边界
+为了build可靠且稳定的系统，你必须定义资源的边界，任何情况下都不要无限制的使用资源，semaphore是一个理想的工具用来限制高额的资源，比如说数据库连接，顺便把连接池打开
+
+9.使用synchronized块，而不是方法
+    使用同步块可以缩小锁范围，它允许你锁object，而不是this，今天你的第一选择应该是原子变量，当在需要互相排除的情况下使用ReentrantLock跟着synchronized
+10.不要使用静态变量
+    如果碰巧使用到，建议用final修辞，如果是引用变量，使它只读
+
+11.使用锁，而不是synchronized
+    双刃剑，锁很强大，但也带来更多考虑。不同的读写锁可以build出高可扩展性的结构，像ConcurrentHashMap，不像synchronized，锁不会自动释放，最好在finally里面释放
