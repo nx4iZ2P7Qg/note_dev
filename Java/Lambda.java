@@ -49,6 +49,9 @@ public class Lambda {
         System.out.println("Lowest prime number in List : " + stats.getMin());
         System.out.println("Sum of all prime numbers : " + stats.getSum());
         System.out.println("Average of all prime numbers : " + stats.getAverage());
+
+        Runnable r = () ->
+                System.out.printf("Runnable的简写");
     }
 
 }
