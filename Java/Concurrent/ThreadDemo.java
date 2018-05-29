@@ -2,7 +2,7 @@
  * 继承Thread类，重写run()方法
  * 实例用start()方法启用线程
  */
-public class Thread01 extends Thread {
+public class ThreadDemo extends Thread {
 
     /**
      * 用来分辨是哪个实例在运行

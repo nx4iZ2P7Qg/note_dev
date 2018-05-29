@@ -2,7 +2,7 @@
  * 实现Runnable类，重写run()方法
  * 实例用start()方法启用线程
  */
-public class Thread02 implements Runnable {
+public class RunnableDemo implements Runnable {
 
     /**
      * 用来分辨是哪个实例在运行
