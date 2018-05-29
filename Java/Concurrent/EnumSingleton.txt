@@ -1,0 +1,27 @@
+参考：https://javarevisited.blogspot.com/2012/07/why-enum-singleton-are-better-in-java.html
+
+为什么说Enum的单例更好
+1.简单
+    public enum EasySingleton{
+        INSTANCE;
+    }
+    为了简便没有加入属性与方法，要注意，如果使用了实例方法并且改变了实例的状态，要确保线程安全，默认的枚举实例是线程安全的，但其他方法就是程序员的事了
+    /**
+    * 一个类加载时的静态单例
+    * Singleton pattern example with static factory method
+    */
+
+    public class Singleton{
+        //initialized during class loading
+        private static final Singleton INSTANCE = new Singleton();
+
+        //to prevent creating another instance of Singleton
+        private Singleton(){}
+
+        public static Singleton getSingleton(){
+            return INSTANCE;
+        }
+    }
+2.枚举单例自动处理序列化
+    传统单例实现序列化后就不是单例了，因为readObject()像构造器一样返回新的实例
+3.枚举单例线程安全
