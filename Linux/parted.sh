@@ -8,3 +8,5 @@ mklabel gpt
 mkpart primary xfs 0 100%
 # 退出
 quit
+# 格式化
+mkfs.xfs /dev/sdd1
