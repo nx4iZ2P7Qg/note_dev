@@ -67,6 +67,9 @@ set is 逐字匹配
     /aaa/;/bbb/ 搜索aaa换行后的bbb
     匹配到目标后，ce/cw消除并修改成要的字符，之后再用.重复
 
+替换
+    搜索时用\n代表新行，但替换时要用\r，\n被用来表示null了
+
 
 
 vimtutor -> :help user-manual
