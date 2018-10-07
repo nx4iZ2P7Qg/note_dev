@@ -122,6 +122,10 @@ https://www.c-rieger.de/nextcloud-installation-guide-advanced/#excursion41
 
 # 在nextcloud的目录下执行，可以重新扫描data目录下的文件到云盘数据库
 sudo -u apache php console.php files:scan --all
+# 扫描指定用户的所有文件
+sudo -u apache php console.php files:scan
+# 扫描指定目录
+sudo -u apache php console.php files:scan --path=sophia/files/dex
 # 有时刚刚扫描文件后，会遇到You don't have permission to upload or create files here的问题
 # 一般是文件夹权限，user与group都是apache，data目录有写权限
 # 有时一切正常，但还是有这个问题，可以将上面的扫描命令再执行一遍，就正常了
