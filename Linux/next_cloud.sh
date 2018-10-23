@@ -133,6 +133,9 @@ sudo -u apache php console.php files:scan --path=sophia/files/dex
 sudo chown apache:apache -R data
 # 后，还需要刷新一次，就可以正常上传了
 
+# 意外的停留在维护模式时
+sudo -u apache php /var/www/nextcloud/occ maintenance:mode --off
+
 # samba, selinux共存的问题
 #
 # nextcloud的data文件夹，只能指定一个地方
