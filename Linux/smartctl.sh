@@ -1,3 +1,6 @@
+# 安装
+yum install smartmontools
+
 # 检查硬盘是否支持smart
 smartctl -i /dev/sda
 

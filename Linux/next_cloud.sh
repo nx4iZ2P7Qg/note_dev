@@ -5,23 +5,6 @@ rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 yum install php71w-devel php71w-fpm
 # 查看module list
 php -m
-# 对比官网安装向导，缺module dom，查找php-dom，可以看到需要安装php-xml包
-yum provides php-dom
-# 安装下面的包后解决
-yum install php71w-xml.x86_64
-# 缺少gd
-yum install php71w-gd.x86_64
-# 缺少mbstring
-yum install php71w-mbstring.x86_64
-# 缺少posix
-yum install php71w-process.x86_64
-# 安装数据库连接
-yum install php71w-pgsql.x86_64
-# 安装推荐包
-yum install php71w-intl.x86_64
-yum install php71w-mcrypt.x86_64
-# 某些应用使用的包
-yum install php71w-ldap.x86_64 php71w-snmp.x86_64 php71w-imap.x86_64
 
 # 设置php开机启动
 systemctl enable php-fpm.service
@@ -133,6 +116,10 @@ sudo -u apache php console.php files:scan --path=sophia/files/dex
 sudo chown apache:apache -R data
 # 后，还需要刷新一次，就可以正常上传了
 
+# 远程访问的trusted_domains
+# 修改nextcloud/config/config.php，添加相应条目，通常是
+# 1 => 'svrx.asuscomm.com:30002',
+
 # 意外的停留在维护模式时
 sudo -u apache php /var/www/nextcloud/occ maintenance:mode --off
 
@@ -160,6 +147,11 @@ sudo setsebool -P smbd_anon_write on
 # 考虑将data的内容分开，一部分只读比较合适
 
 # 缓存配置
+# 安装
+yum install redis
+yum install php71w-pecl-redis
+systemctl enable redis
+systemctl start redis
 # 修改nextcloud/config/config.php，添加以下内容
   'memcache.locking' => '\OC\Memcache\Redis',
   'memcache.local' => '\OC\Memcache\Redis',
@@ -175,5 +167,20 @@ sudo setsebool -P httpd_unified 1
 # 但安全原因又建议关闭此功能
 # 删除
 sudo semanage port -d -t http_port_t -p tcp 6379
+# 允许http执行外部命令
 setsebool -P httpd_execmem 1
 setsebool -P httpd_can_network_connect 1
+
+# 配置页的警告信息及解决办法
+# Use of the the built in php mailer is no longer supported
+# 在邮箱设置界面随便填个邮箱就行，等nc15，会有结果
+# Your web server is not properly set up to resolve "/.well-known/caldav"
+# 在sites-available/nextcloud.conf最后添加两行
+Redirect 301 /.well-known/carddav /nextcloud/remote.php/dav
+Redirect 301 /.well-known/caldav /nextcloud/remote.php/dav
+# opcache
+# 配好redis后，修改/etc/php.d/opcache.ini，逐条与页面对比
+#The “Referrer-Policy” HTTP header is not set to “no-referrer”
+# 修改nextcloud/.htaccess
+# 在Header set X-Permitted-Cross-Domain-Policies "none"下面添加一行
+# Header set Referrer-Policy "no-referrer"
