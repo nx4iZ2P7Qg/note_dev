@@ -1,3 +1,8 @@
+# centos等dis中有时是最小的vim，没有语法高亮功能
+# 安装vim
+yum install vim-enhanced
+# 在~/.vimrc中定制需要的属性
+
 一般模式
     dw
     de 当前->单词结束
