@@ -128,7 +128,12 @@ sudo -u apache php /var/www/nextcloud/occ maintenance:mode --off
 # nextcloud的data文件夹，只能指定一个地方
 # 如果指定到本地磁盘，当用户多了后(用户目录在data/[username]，所属文件在下层/files)
 # 文件很快就会占满本地磁盘，所以考虑放在/mnt盘上
-#
+
+# nextcloud/data目录会反复地重置权限为770，影响samba服务
+# 添加用户到apache组解决
+usermod -a -G apache dexter
+# 可能需要重启smb
+
 # /mnt最初是作为samba共享在使用，里面所有的文件只有一个selinux type，手动挂载时是samba_share_t
 # 作为fstab挂载时可以指定，但也只有一个
 # 如果需要samba访问的同时，又要httpd访问

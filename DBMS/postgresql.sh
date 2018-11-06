@@ -12,7 +12,9 @@
     # 连接到数据库
     psql
     # 添加新用户
-    create user foo with password 'secret';
+    create user dexter with password 'secret';
+    # 添加权限到默认数据库
+    grant all privileges on database postgres to dexter;
     # 退出数据库
     \q
     # 配置远程连接
