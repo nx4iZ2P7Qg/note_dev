@@ -21,6 +21,9 @@ vi /var/lib/transmission/.config/transmission-daemon/settings.json
 # 添加防火墙规则
 firewall-cmd --permanent --zone=public --add-port 9091/tcp
 firewall-cmd --permanent --zone=public --add-port 9091/udp
+# 51413用来处理peer
+firewall-cmd --permanent --zone=public --add-port 51413/tcp
+firewall-cmd --permanent --zone=public --add-port 51413/udp
 firewall-cmd --reload
 # 正式启动服务
 systemctl start transmission-daemon
