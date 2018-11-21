@@ -261,7 +261,8 @@ public class Temp {
         // 5.1.3
         // 返回类型不是方法签名的一部分，所以在子类重写方法时，要注意保证返回类型的兼容性，允许子类的返回类型为原类型的子类
 
-
+        // 输出当前目录，相对路径时可用
+        System.out.println(System.getProperty("user.dir"));
     }
     enum Size {
         SMALL, MEDIUM, LARGE, EXTRA_LARGE
