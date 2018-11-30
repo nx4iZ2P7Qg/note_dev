@@ -13,6 +13,8 @@ git push -f origin master
 步骤2、使用如下两个命令撤销提交：
     git reset --hard  commit-id2
     git push origin HEAD --force
+# 如果想回退本地commit
+git reset --soft <commit id>
 
 
 # osChina git远程版本库初始化
