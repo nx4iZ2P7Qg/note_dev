@@ -1,0 +1,7 @@
+修改新文件换行符
+    alt + f -> other settings -> default settings -> editor -> code style -> line separator
+修改项目所有文件换行符
+    project视图下，选中任意目录，alt + f -> line separators
+
+plugins
+    Alibaba Java Coding Guidelines

@@ -1,0 +1,8 @@
+文件后缀关联
+    windows -> preferences -> file associations
+文件编码
+    windows -> preferences -> workspace
+新文件换行符
+    windows -> preferences -> workspace
+批量修改文件换行符
+    file -> convert line delimiters to
