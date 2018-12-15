@@ -1,8 +1,11 @@
 package designpattern.builder.item.impl;
 
-import designpattern.builder.item.ColdDrink;
+import designpattern.builder.item.AbstractColdDrink;
 
-public class Pepsi extends ColdDrink {
+/**
+ * @author DF
+ */
+public class Pepsi extends AbstractColdDrink {
     @Override
     public String name() {
         return "Pepsi";

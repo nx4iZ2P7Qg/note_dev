@@ -5,13 +5,13 @@
  * 通常会破坏单例的情况是多线程
  */
 class SingletonDemo {
-    private static Singleton _instance;
+    private static Singleton instance;
 
     public static Singleton getInstance() {
-        if (_instance == null) {
-            _instance = new Singleton();
+        if (instance == null) {
+            instance = new Singleton();
         }
-        return _instance;
+        return instance;
     }
 }
 
@@ -22,17 +22,19 @@ class SingletonDemo {
  * 在判空处同步，就是double check locking pattern
  */
 class ConcurrentSingletonDemo {
-    private static Singleton _instance;
+    private static Singleton instance;
 
     public static Singleton getInstanceDC() {
-        if (_instance == null) {                // Single Checked
+        // Single Checked
+        if (instance == null) {
             synchronized (Singleton.class) {
-                if (_instance == null) {        // Double checked
-                    _instance = new Singleton();
+                // Double checked
+                if (instance == null) {
+                    instance = new Singleton();
                 }
             }
         }
-        return _instance;
+        return instance;
     }
 }
 

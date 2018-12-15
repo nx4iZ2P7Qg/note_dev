@@ -3,6 +3,11 @@ import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * 
+ * @author DF
+ *
+ */
 public class Lambda {
 
     public static void main(String[] args) {
@@ -26,12 +31,12 @@ public class Lambda {
                 .get();
         System.out.println("Total : " + bill);
 
-        List<String> G7 = Arrays.asList("USA", "Japan", "France", "Germany",
+        List<String> g7 = Arrays.asList("USA", "Japan", "France", "Germany",
                 "Italy", "U.K.", "Canada");
-        String G7Countries = G7.stream()
+        String g7Countries = g7.stream()
                 .map(x -> x.toUpperCase())
                 .collect(Collectors.joining(", "));
-        System.out.println(G7Countries);
+        System.out.println(g7Countries);
 
         List<Integer> numbers = Arrays.asList(9, 10, 3, 4, 7, 3, 4);
         List<Integer> distinct = numbers

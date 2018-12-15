@@ -5,6 +5,9 @@ import designpattern.builder.item.Item;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author DF
+ */
 public class Meal {
     private List<Item> items = new ArrayList<>();
 

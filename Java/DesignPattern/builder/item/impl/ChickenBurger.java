@@ -1,8 +1,11 @@
 package designpattern.builder.item.impl;
 
-import designpattern.builder.item.Burger;
+import designpattern.builder.item.AbstractBurger;
 
-public class ChickenBurger extends Burger {
+/**
+ * @author DF
+ */
+public class ChickenBurger extends AbstractBurger {
     @Override
     public String name() {
         return "Chicken Burger";

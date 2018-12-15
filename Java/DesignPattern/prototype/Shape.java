@@ -1,9 +1,17 @@
 package designpattern.prototype;
 
+/**
+ * 
+ * @author DF
+ *
+ */
 public abstract class Shape implements Cloneable {
     private String id;
     protected String type;
 
+    /**
+     * 绘制
+     */
     abstract void draw();
 
     public String getType() {

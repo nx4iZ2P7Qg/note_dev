@@ -1,5 +1,10 @@
 package designpattern.abstractfactory;
 
+/**
+ * 
+ * @author DF
+ *
+ */
 public class AbstractFactoryPatternDemo {
     public static void main(String[] args) {
         AbstractFactory shapeFactory = FactoryProducer.getFactory("SHAPE");

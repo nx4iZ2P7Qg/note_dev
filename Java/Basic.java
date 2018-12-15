@@ -1,7 +1,11 @@
 import java.io.Console;
 import java.util.Arrays;
 import java.util.Scanner;
-
+/**
+ * 
+ * @author DF
+ *
+ */
 public class Temp {
     public static strictfp void main(String[] args) {
         // 3.2 注释
@@ -15,13 +19,17 @@ public class Temp {
 //    int int2 = 010;
         // 2进制数
         int int3 = 0b10;
-        System.out.println("int1 = " + int1); // 16
-        System.out.println("int3 = " + int3); // 2
+        // 16
+        System.out.println("int1 = " + int1);
+        // 2
+        System.out.println("int3 = " + int3);
         // java7支持长整数添加下划线方便阅读
         long long1 = 12_3456_7890_0000_0000L;
-        System.out.println("long1 = " + long1); // 123456789000000000
+        // 123456789000000000
+        System.out.println("long1 = " + long1);
         long long2 = 0b111_1111_1000_0000;
-        System.out.println("long2 = " + long2); // 32640
+        // 32640
+        System.out.println("long2 = " + long2);
 
         // 3.3.2
         // float 4字节 double 8字节
@@ -57,9 +65,9 @@ public class Temp {
         // 16进制unicode表示范围为\u0000 ~ \uffff
         char c3 = '\uffff';
         System.out.println("c3 = " + c3);
-        // 特别的
-        System.out.println('\u2122'); // ™
-        System.out.println('\u03c0'); // π
+        // 特别的  ™ π
+        System.out.println('\u2122');
+        System.out.println('\u03c0');
 
         // unicode与utf-16的一个例子
         // utf-16中常用字是2Byte16位，最大65536个字符，生僻字用4Byte32位储存
@@ -77,7 +85,7 @@ public class Temp {
         System.out.println(chars1); // 𤭢
         // 字符串初始化
         String s1 = "\uD852\uDF62";
-        System.out.println(s1); // 𤭢
+        System.out.println(s1);
         // 强烈建议不要在代码中使用char类型
 
         // 3.4
@@ -116,7 +124,8 @@ public class Temp {
 
         // 3.5.6
         // 强转，且数值超过类型的范围，数据会乱
-        System.out.println((byte) 300); // 44
+        // 44
+        System.out.println((byte) 300);
 
         // 3.5.8
         // 枚举类，见后面的Size类
@@ -128,18 +137,26 @@ public class Temp {
         String s361 = "ab";
         String s362 = "a" + "b";
         String s363 = "abcdefg".substring(0, 2);
-        System.out.println(s361 == s362); // true
-        System.out.println(s361 == s363); // false
+        // true
+        System.out.println(s361 == s362);
+        // false
+        System.out.println(s361 == s363);
 
         // 3.6.6
-        String s366 = "\uD852\uDF62\uD852\uDF62"; // "𤭢𤭢"
-        System.out.println(s366.length()); // 返回代码单元数量 4
-        System.out.println(s366.codePointCount(0, s366.length())); // 实际代码点数量 2
-        System.out.println(s366.charAt(0)); // 某处代码单元 ?，无法识别，因为双代码单元
+        // "𤭢𤭢"
+        String s366 = "\uD852\uDF62\uD852\uDF62";
+        // 返回代码单元数量 4
+        System.out.println(s366.length());
+        // 实际代码点数量 2
+        System.out.println(s366.codePointCount(0, s366.length()));
+        // 某处代码单元 ?，无法识别，因为双代码单元
+        System.out.println(s366.charAt(0));
         // 想得到第i处代码点
         int index = s366.offsetByCodePoints(0, 1);
-        System.out.println(index); // 2
-        System.out.println(s366.codePointAt(2)); // 150370
+        // 2
+        System.out.println(index);
+        // 150370
+        System.out.println(s366.codePointAt(2));
         // 不要使用char类型，太底层
         // 用codePoint遍历字符串
         int i = 0;
@@ -170,9 +187,6 @@ public class Temp {
         sc.nextDouble();
         // 以下代码在ide中运行会得到空的cons，因为不是在terminal中运行，ide进行了重定向
         // se6加入了console输入密码
-//        Console cons = System.console();
-//        String s3712 = cons.readLine("Username:");
-//        char[] passwd = cons.readPassword("Password:");
         // passwd使用后应立即填充
 
         // 3.7.2
@@ -211,8 +225,9 @@ public class Temp {
 
         // 3.10.7
         // 不规则数组
-        int[][] odds = new int[3][];
-        for (int li = 0; li < 3; li++) {
+        int length = 3;
+        int[][] odds = new int[length][];
+        for (int li = 0; li < length; li++) {
             odds[li] = new int[li + 1];
         }
         System.out.println(Arrays.deepToString(odds));
@@ -264,7 +279,11 @@ public class Temp {
         // 输出当前目录，相对路径时可用
         System.out.println(System.getProperty("user.dir"));
     }
+    
     enum Size {
+        /**
+         * 
+         */
         SMALL, MEDIUM, LARGE, EXTRA_LARGE
     }
 }

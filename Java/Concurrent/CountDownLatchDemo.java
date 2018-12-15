@@ -19,7 +19,8 @@ import java.util.logging.Logger;
  *
  * Java程序演示如何使用CountDownLatch
  * CountDownLatch在如下情形能有效发挥作用：主进程依赖线程服务开启后才能开始运行
- *
+ * 
+ * @author DF
  */
 public class CountDownLatchDemo {
 

@@ -1,5 +1,10 @@
 package designpattern.adapter;
 
+/**
+ * 
+ * @author DF
+ *
+ */
 public class VlcPlayer implements AdvancedMediaPlayer {
     @Override
     public void playVlc(String fileName) {

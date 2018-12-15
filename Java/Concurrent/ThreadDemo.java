@@ -1,6 +1,8 @@
 /**
  * 继承Thread类，重写run()方法
  * 实例用start()方法启用线程
+ * 
+ * @author DF
  */
 public class ThreadDemo extends Thread {
 

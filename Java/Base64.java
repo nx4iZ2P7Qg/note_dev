@@ -10,9 +10,10 @@ import java.io.IOException;
  * 3.四个6位二进制前面加00补到8位
  * 4.四个8位转换成10进制查表，[A-Z]对应0-25，[a-z]对应26-51，[0-9]对应52-61，+62，/63
  *
+ * @author DF
  */
 public class Base64 {
-    static final char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
+    static final char[] ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
 
     public Base64() {
     }
@@ -20,6 +21,7 @@ public class Base64 {
     public static char[] encode(byte[] content) {
         CharArrayWriter cw = new CharArrayWriter(4 * content.length / 3);
         int idx = 0;
+        int targetIndex = 2;
         int x = 0;
 
         for (int i = 0; i < content.length; ++i) {
@@ -48,7 +50,7 @@ public class Base64 {
             cw.write(61);
         }
 
-        if (idx == 2) {
+        if (idx == targetIndex) {
             cw.write(alphabet[x >> 18]);
             cw.write(alphabet[x >> 12 & 63]);
             cw.write(alphabet[x >> 6 & 63]);

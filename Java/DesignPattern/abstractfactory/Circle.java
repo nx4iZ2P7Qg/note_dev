@@ -1,5 +1,10 @@
 package designpattern.abstractfactory;
 
+/**
+ * 
+ * @author DF
+ *
+ */
 public class Circle implements Shape {
     @Override
     public void draw() {

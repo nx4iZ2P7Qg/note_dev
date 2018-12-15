@@ -1,5 +1,10 @@
 package designpattern.prototype;
 
+/**
+ * 
+ * @author DF
+ *
+ */
 public class PrototypePatternDemo {
     public static void main(String[] args) {
         ShapeCache.loadCache();

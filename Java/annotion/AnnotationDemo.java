@@ -27,8 +27,9 @@ import java.lang.reflect.Method;
  * @ Inherited 是否允许继承
  * <p>
  * servlet3.0中也有很多注解
+ * 
+ * @author DF
  */
-
 public class AnnotationDemo {
 
     @Todo(author = "abc", priority = Todo.Priority.HIGH, status = Todo.Status.NOT_STARTED)
@@ -37,7 +38,9 @@ public class AnnotationDemo {
     }
 
     // ide的todo示例
-    // todo
+    /**
+     * todo
+     */
     public void incompleteMethod02() {
 
     }

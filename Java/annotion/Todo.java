@@ -8,9 +8,20 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @interface Todo {
-    enum Priority {LOW, MEDIUM, HIGH}
+    enum Priority {
+        /**
+         * 
+         */
+        LOW, 
+        MEDIUM, 
+        HIGH}
 
-    enum Status {STARTED, NOT_STARTED}
+    enum Status {
+        /**
+         * 
+         */
+        STARTED, 
+        NOT_STARTED}
 
     String author() default "df";
 

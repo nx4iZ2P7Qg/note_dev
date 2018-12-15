@@ -2,6 +2,11 @@ package designpattern.prototype;
 
 import java.util.Hashtable;
 
+/**
+ * 
+ * @author DF
+ *
+ */
 public class ShapeCache {
     private static Hashtable<String, Shape> shapeMap = new Hashtable<>();
 

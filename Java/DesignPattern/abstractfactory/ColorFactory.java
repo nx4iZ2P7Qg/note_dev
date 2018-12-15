@@ -1,5 +1,10 @@
 package designpattern.abstractfactory;
 
+/**
+ * 
+ * @author DF
+ *
+ */
 public class ColorFactory extends AbstractFactory {
     @Override
     public Shape getShape(String shapeType){
@@ -8,18 +13,21 @@ public class ColorFactory extends AbstractFactory {
 
     @Override
     Color getColor(String color) {
+        String red = "RED";
+        String green = "GREEN";
+        String blue = "BLUE";
 
         if(color == null){
             return null;
         }
 
-        if(color.equalsIgnoreCase("RED")){
+        if(color.equalsIgnoreCase(red)){
             return new Red();
 
-        }else if(color.equalsIgnoreCase("GREEN")){
+        }else if(color.equalsIgnoreCase(green)){
             return new Green();
 
-        }else if(color.equalsIgnoreCase("BLUE")){
+        }else if(color.equalsIgnoreCase(blue)){
             return new Blue();
         }
 

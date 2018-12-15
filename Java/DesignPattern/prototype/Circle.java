@@ -1,5 +1,10 @@
 package designpattern.prototype;
 
+/**
+ * 
+ * @author DF
+ *
+ */
 public class Circle extends Shape {
     public Circle() {
         type = "Circle";

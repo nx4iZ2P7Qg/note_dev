@@ -1,6 +1,8 @@
 /**
  * 实现Runnable类，重写run()方法
  * 实例用start()方法启用线程
+ * 
+ * @author DF
  */
 public class RunnableDemo implements Runnable {
 

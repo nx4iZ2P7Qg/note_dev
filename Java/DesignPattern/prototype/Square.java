@@ -1,5 +1,10 @@
 package designpattern.prototype;
 
+/**
+ * 
+ * @author DF
+ *
+ */
 public class Square extends Shape {
     public Square() {
         type = "Square";

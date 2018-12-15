@@ -1,5 +1,10 @@
-package designpattern.Singleton;
+package designpattern.singleton;
 
+/**
+ * 
+ * @author DF
+ *
+ */
 public class SingleObject {
     private static SingleObject instance = new SingleObject();
 

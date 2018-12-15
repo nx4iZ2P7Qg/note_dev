@@ -17,6 +17,8 @@ import java.util.concurrent.Semaphore;
  * 注意点
  * 多个tryAquire()方法重载
  * acquireUninterruptibly()，阻止其他请求，等待使用权(?)
+ * 
+ * @author DF
  */
 public class SemaphoreTest {
 

@@ -18,7 +18,11 @@ import java.util.logging.Logger;
  */
 public class CyclicBarrierExample {
 
-    //Runnable task for each thread
+    /**
+     * Runnable task for each thread
+     * @author DF
+     *
+     */
     private static class Task implements Runnable {
 
         private CyclicBarrier barrier;
