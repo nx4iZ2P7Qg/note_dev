@@ -19,12 +19,10 @@ git reset --soft <commit id>
 
 # osChina git远程版本库初始化
 # osChina中创建新项目
-
 # Git 全局设置:
 git config --global user.name "fzcfydcz"
 git config --global user.email "fzcfydcz@163.com"
 # 设置内容保存在windows/user/DF/.gitconfig
-
 # 创建 git 仓库:
 mkdir MyNote
 cd MyNote
@@ -35,8 +33,12 @@ git commit -m "first commit"
 git remote add origin https://gitee.com/fzcfydcz/MyNote.git
 # -u 指 --set-upstream
 git push -u origin master
-
 # 已有项目?
 cd existing_git_repo
 git remote add origin https://gitee.com/fzcfydcz/MyNote.git
 git push -u origin master
+
+
+# git clone项目时提示filename too long
+# 使用admin开启git bash，配置成可以支持长文件名
+git config --system core.longpaths true
