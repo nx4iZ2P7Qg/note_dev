@@ -15,6 +15,8 @@ smartctl -t short /dev/sda # 后台检测硬盘，消耗时间短
 smartctl -t long /dev/sda # 后台检测硬盘，消耗时间长
 smartctl -C -t short /dev/sda # 前台检测硬盘，消耗时间短
 smartctl -C -t long /dev/sda # 前台检测硬盘，消耗时间长
+# 检测运输是否引起问题
+smartctl -t conveyance /dev/sde
 # 中断检测
 smartctl -X /dev/sda
 
