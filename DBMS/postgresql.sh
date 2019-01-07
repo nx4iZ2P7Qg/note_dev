@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # 在CentOS7上的安装
     yum install postgresql-server
     # 数据库初始化
@@ -25,3 +27,12 @@
 # 防火墙
     firewall-cmd --permanent --zone=public --add-service=postgresql
     firewall-cmd --reload
+# 数据备份
+    # 改变命令执行路径
+    cd /mnt/sdb1/net_disk/
+    # 创建文件
+    touch /mnt/sdb1/net_disk/pg_dump.sql
+    # 修改权限
+    chown postgres:postgres /mnt/sdb1/net_disk/pg_dump.sql
+    # dump
+    sudo -u postgres pg_dump -c -C -f /mnt/sdb1/net_disk/pg_dump.sql --column-inserts df
