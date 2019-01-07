@@ -1,0 +1,30 @@
+语言：C, Java, K Shell, JavaScript,
+数据库：Oracle, DB2
+ETL: IBM Datastage, Kettle
+框架：struts/struts2, spring, hibernate, extjs, ibatis
+开发平台：IBM AIX 5.3, uBuntu 14.04, Windows
+相对擅长：struts2, Shell
+
+Python3.4
+Html5
+PL-SQL
+Git
+SVN
+angularJS
+
+mysql
+sqlite
+Android
+Hadoop
+Hive
+Flex
+velocity
+以Docker为代表的Container技术
+以Spark为代表的内存计算技术
+Redis、Neo4j等为代表的NoSQL技术
+
+thrift
+protobuf
+
+弃用:
+Bootstrap
