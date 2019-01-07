@@ -1,0 +1,50 @@
+BEGIN
+	# 游标结束标志
+	DECLARE done INT DEFAULT FALSE;
+	# 游标变量
+	declare days int;
+	declare stock_code int;
+	declare wholesale_date date;
+	declare in_stock_date date;
+	declare in_dealer varchar(255);
+	declare belonging_dealer varchar(20);
+	# 异常变量
+	DECLARE t_error int;
+	# 游标与结果集
+	DECLARE rs_cursor CURSOR
+	FOR 
+	select `库龄天数`, a.`库存编号`, a.`批发日期`, a.入库日期, a.调入经销商, a.所属经销商
+	from `LSH库存表` a
+	left join `报价单表` b on a.`库存编号` = b.`库存编号`
+	left join 报价交车表 c on b.交车 = c.编号
+	# 已经开票的车不算库龄
+	where (c.开票时间 is null or c.开票时间 < c.退票时间);
+	# 定义异常处理
+	DECLARE CONTINUE HANDLER FOR SQLEXCEPTION SET t_error = 1;
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+	# 开始事务
+	start TRANSACTION;
+	OPEN rs_cursor;
+	read_loop: loop
+		fetch rs_cursor into days, stock_code, wholesale_date, in_stock_date, in_dealer, belonging_dealer;
+		IF done THEN
+			LEAVE read_loop;
+		END IF;
+		# 如果批发日期为空，表示车还没入库，不算库龄
+		if (wholesale_date is not null) THEN
+			set days = TO_DAYS(CURRENT_DATE()) - TO_DAYS(wholesale_date);
+			# 如果调入经销商不为空，且调入经销商等于所属经销商，表示该车调动过，库龄要算法改变
+			if (in_dealer is not null && in_dealer = belonging_dealer) then
+				set days = TO_DAYS(CURRENT_DATE()) - TO_DAYS(in_stock_date);
+			end if;
+		end if;
+		update `LSH库存表` set `库龄天数` = days where `库存编号` = stock_code;
+	end loop;
+	close rs_cursor;
+	# 事务结果处理
+	IF t_error = 1 THEN
+		ROLLBACK;
+	ELSE
+		COMMIT;
+	END IF;
+END
