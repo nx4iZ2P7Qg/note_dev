@@ -94,6 +94,26 @@ semanage port -l | grep http
 #
 # </Directory>
 
+# 修改文件夹selinux
+semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/nextcloud/data(/.*)?'
+semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/nextcloud/config(/.*)?'
+semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/nextcloud/apps(/.*)?'
+semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/nextcloud/.htaccess'
+semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/nextcloud/.user.ini'
+semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/nextcloud/console.php'
+semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/nextcloud/version.php'
+semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/nextcloud/COPYING'
+semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/nextcloud/AUTHORS'
+semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/nextcloud/index.php'
+semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/nextcloud/status.php'
+semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/nextcloud/robots.txt'
+semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/nextcloud/occ'
+semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/nextcloud/remote.php'
+semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/nextcloud/cron.php'
+semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/nextcloud/index.html'
+semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/nextcloud/public.php'
+restorecon -Rv '/var/www/nextcloud/'
+
 # 查看https是否正确配置
 openssl s_client -debug -connect df-host.asuscomm.com:30002
 
