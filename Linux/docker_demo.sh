@@ -90,3 +90,6 @@ docker build -t df/centos:7.0 .
 
 # 为镜像添加标签
 docker tag container_id df/centos:newtag
+
+# 导出当前运行的容器
+docker export -o certusvmanagerdriver.tar e07593dc83d5
