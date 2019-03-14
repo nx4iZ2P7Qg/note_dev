@@ -1,0 +1,21 @@
+vboxmanage extpack install Oracle_VM_VirtualBox_Extension_Pack-6.0.0.vbox-extpack
+
+vboxmanage createvm --name "win7" --ostype Windows7_64 --register
+vboxmanage modifyvm "win7" --memory 2048 --acpi on --boot1 dvd--nic1 nat 
+vboxmanage createhd --filename "win7.vdi" --size 20480
+vboxmanage storagectl "win7" --name "IDE Controller" --add ide --controller PIIX4
+vboxmanage storageattach "win7" --storagectl "IDE Controller" --port 0 --device 0 --type hdd --medium "win7.vdi"
+vboxmanage storageattach "win7" --storagectl "IDE Controller" --port 0 --device 1 --type dvddrive --medium /mnt/sdb1/net_disk/reinstall/cn_windows_7_ultimate_with_sp1_x64_dvd_u_677408.iso
+vboxmanage modifyvm "win7" --vrde on
+vboxheadless --startvm "win7"
+VBoxManage startvm "win7" --type headless --vrdeport 3389
+
+vboxmanage unregistervm "win7" --delete
+
+vboxmanage list ostypes
+vboxmanage list vms
+
+# ftp
+http://download.virtualbox.org/virtualbox/6.0.0/
+# guest addition
+http://download.virtualbox.org/virtualbox/6.0.0/VBoxGuestAdditions_6.0.0.iso
