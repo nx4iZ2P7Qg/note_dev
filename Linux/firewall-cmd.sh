@@ -29,6 +29,8 @@ firewall-cmd --permanent --zone=public --list-services
 firewall-cmd --permanent --zone=public --list-ports
 # 设置某个ip 访问某个服务，ip 192.168.0.4/24 访问 http
 firewall-cmd --permanent --zone=public --add-rich-rule="rule family="ipv4" source address="192.168.0.4/24" service name="http" accept"
+# 允许特定ip通过特定端口
+firewall-cmd --permanent --zone=public --add-rich-rule='rule family=ipv4 source address=10.0.0.131 port port=3389 protocol=tcp accept'
 # 删除上面设置的规则
 firewall-cmd --permanent --zone=public --remove-rich-rule="rule family="ipv4" source address="192.168.0.4/24" service name="http" accept"
 # 检查设定是否生效
