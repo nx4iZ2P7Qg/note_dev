@@ -1,7 +1,10 @@
 vboxmanage extpack install Oracle_VM_VirtualBox_Extension_Pack-6.0.0.vbox-extpack
 
 vboxmanage createvm --name "win7" --ostype Windows7_64 --register
-vboxmanage modifyvm "win7" --memory 2048 --acpi on --boot1 dvd--nic1 nat 
+# nat网络
+vboxmanage modifyvm "win7" --memory 2048 --acpi on --boot1 dvd --nic1 nat 
+# 桥接网络，enp2s0是物理网络接口，使用firewall-cmd --list-all查看
+vboxmanage modifyvm "win7" --nic1 bridged --nictype1 82545EM --bridgeadapter1 enp2s0
 vboxmanage createhd --filename "win7.vdi" --size 20480
 vboxmanage storagectl "win7" --name "IDE Controller" --add ide --controller PIIX4
 vboxmanage storageattach "win7" --storagectl "IDE Controller" --port 0 --device 0 --type hdd --medium "win7.vdi"
