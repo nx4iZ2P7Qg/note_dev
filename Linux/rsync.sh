@@ -21,4 +21,4 @@ nohup rsync -a --info=ALL -H -h -u --delete /mnt/sdb1/PT/ /mnt/sde1/sdb1/ &
 rsync -n -a --info=ALL -H -h -u --delete --exclude net_disk/download /mnt/sdb1/ /mnt/sdd1/sdb1/
 
 # 8T
-rsync -n -a --info=ALL -H -h -u --delete --exclude net_disk/download /mnt/sde1/ /mnt/sdf1/
+rsync -n -a --info=ALL -H -h -u --delete /mnt/sde1/ /mnt/sdf1/
