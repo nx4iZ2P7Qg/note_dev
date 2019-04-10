@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+sudo usermod -aG docker <username>
+
 docker run ubuntu:15.10 /bin/echo "Hello world"
 
 docker run -i -t ubuntu:15.10 /bin/bash
@@ -104,3 +106,17 @@ svnadmin create --fs-type fsfs s-repo
 # svnserve.conf 中反注释 password-db = passwd
 # passwd 中添加 sophia = a17
 ############################ svn ############################
+
+
+############################ mariadb ############################
+docker run --name wordpress_db -p 3306 -e MYSQL_ROOT_PASSWORD=<pwd> -e MYSQL_DATABASE=wordpress -d mariadb
+############################ mariadb ############################
+
+
+############################ wordpress ############################
+docker run --name wordpress -e WORDPRESS_DB_PASSWORD=<pwd> --link wordpress_db:mysql -p <port>:80 -d wordpress
+
+# 访问 http://<ip>:<port>
+# 安装向导页 http://<ip>:<port>/wp-admin/install.php
+# 管理页 http://<ip>:<port>/wp-admin
+############################ wordpress ############################
