@@ -31,3 +31,6 @@ systemctl start transmission-daemon
 http://ipaddress:9091
 # 默认web-ui比较弱，可以使用transgui
 https://github.com/transmission-remote-gui/transgui
+
+# 命令行查看任务状态
+transmission-remote -n 'trans:pass_bt_0Z' -l
