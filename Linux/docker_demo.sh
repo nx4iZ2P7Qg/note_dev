@@ -120,3 +120,17 @@ docker run --name wordpress -e WORDPRESS_DB_PASSWORD=<pwd> --link wordpress_db:m
 # 安装向导页 http://<ip>:<port>/wp-admin/install.php
 # 管理页 http://<ip>:<port>/wp-admin
 ############################ wordpress ############################
+
+
+############################ jellyfin ############################
+docker run -d \
+--name jellyfin \
+--volume /home/dexter/docker/jellyfin/config:/config \
+--volume /home/dexter/docker/jellyfin/cache:/cache \
+--volume /mnt/sdd1:/media/sdd1 \
+--volume /mnt/sdc1/data/dexter/files/video/video_ht:/media/video_ht \
+--net=host \
+jellyfin/jellyfin
+
+# http://<yourmachine>:8096
+############################ jellyfin ############################
