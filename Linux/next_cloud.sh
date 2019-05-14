@@ -195,15 +195,34 @@ setsebool -P httpd_execmem 1
 setsebool -P httpd_can_network_connect 1
 
 # 配置页的警告信息及解决办法
+-------------------------------------------------------------------------
 # Use of the the built in php mailer is no longer supported
 # 在邮箱设置界面随便填个邮箱就行，等nc15，会有结果
+-------------------------------------------------------------------------
 # Your web server is not properly set up to resolve "/.well-known/caldav"
 # 在sites-available/nextcloud.conf最后添加两行
 Redirect 301 /.well-known/carddav /nextcloud/remote.php/dav
 Redirect 301 /.well-known/caldav /nextcloud/remote.php/dav
+-------------------------------------------------------------------------
 # opcache
 # 配好redis后，修改/etc/php.d/opcache.ini，逐条与页面对比
-#The “Referrer-Policy” HTTP header is not set to “no-referrer”
+-------------------------------------------------------------------------
+# The “Referrer-Policy” HTTP header is not set to “no-referrer”
 # 修改nextcloud/.htaccess
 # 在Header set X-Permitted-Cross-Domain-Policies "none"下面添加一行
 # Header set Referrer-Policy "no-referrer"
+-------------------------------------------------------------------------
+# The PHP memory limit is below the recommended value of 512MB.
+# 修改/etc/php.ini
+# memory_limit = 1024M
+-------------------------------------------------------------------------
+# imagick
+yum install php71w-pecl-imagick.x86_64
+systemctl restart php-fpm
+systemctl restart httpd
+-------------------------------------------------------------------------
+# missing some indexes
+sudo -u apache php /var/www/nextcloud/occ db:add-missing-indices
+-------------------------------------------------------------------------
+# missing a conversion to big int
+sudo -u apache php /var/www/nextcloud/occ db:convert-filecache-bigint
