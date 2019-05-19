@@ -24,4 +24,4 @@ rsync -n -a --info=ALL -H -h -u --delete --exclude net_disk/download --exclude a
 rsync -n -a --info=ALL -H -h -u --delete /mnt/sdc1/ /mnt/usb1/
 
 # 8T
-rsync -n -a --info=ALL -H -h -u --delete /mnt/sdd1/ /mnt/sde1/
+rsync -n -a --info=ALL -H -h -u --delete /mnt/sdd1/ /mnt/usb1/
