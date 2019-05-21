@@ -11,7 +11,7 @@ vboxmanage storageattach "win7" --storagectl "IDE Controller" --port 0 --device 
 vboxmanage storageattach "win7" --storagectl "IDE Controller" --port 0 --device 1 --type dvddrive --medium /mnt/sdb1/net_disk/reinstall/cn_windows_7_ultimate_with_sp1_x64_dvd_u_677408.iso
 vboxmanage modifyvm "win7" --vrde on
 vboxheadless --startvm "win7"
-VBoxManage startvm "win7" --type headless --vrdeport 3389
+VBoxManage startvm "win7" --type headless
 
 vboxmanage unregistervm "win7" --delete
 
