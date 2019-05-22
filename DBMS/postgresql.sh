@@ -36,3 +36,5 @@
     chown postgres:postgres /mnt/sdb1/net_disk/pg_dump.sql
     # dump
     sudo -u postgres pg_dump -c -C -f /mnt/sdb1/net_disk/pg_dump.sql --column-inserts df
+# 运行sql
+    psql -h localhost -U dexter -d df -c "select * from t_menstrul_cycle"
