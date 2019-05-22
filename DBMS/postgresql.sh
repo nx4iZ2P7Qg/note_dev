@@ -37,4 +37,5 @@
     # dump
     sudo -u postgres pg_dump -c -C -f /mnt/sdb1/net_disk/pg_dump.sql --column-inserts df
 # 运行sql
+    psql -h localhost -d df -U dexter -c "select * from t_menstrul_cycle"
     psql -h localhost -d df -U dexter -c "insert into t_menstrul_cycle values(41, '2019-04-14', 0)"
