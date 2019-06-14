@@ -18,7 +18,7 @@ nohup rsync -a --info=ALL -H -h -u --delete /mnt/sdc1/ /mnt/usb1/ &
 nohup rsync -a --info=ALL -H -h -u --delete /mnt/sdb1/PT/ /mnt/sde1/sdb1/ &
 
 # 2T，不备份download，注意exclude指定的是src后的相对路径
-rsync -n -a --info=ALL -H -h -u --delete --exclude net_disk/download --exclude aria2 /mnt/sdb1/ /mnt/usb1/sdb1/
+rsync -n -a --info=ALL -H -h -u --delete --exclude net_disk/download --exclude aria2 /mnt/sdb1/ /mnt/usb1/
 
 # 4T
 rsync -n -a --info=ALL -H -h -u --delete /mnt/sdc1/ /mnt/usb1/
