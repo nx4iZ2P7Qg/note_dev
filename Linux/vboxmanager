@@ -10,6 +10,7 @@ vboxmanage storagectl "win7" --name "IDE Controller" --add ide --controller PIIX
 vboxmanage storageattach "win7" --storagectl "IDE Controller" --port 0 --device 0 --type hdd --medium "win7.vdi"
 vboxmanage storageattach "win7" --storagectl "IDE Controller" --port 0 --device 1 --type dvddrive --medium /mnt/sdb1/net_disk/reinstall/cn_windows_7_ultimate_with_sp1_x64_dvd_u_677408.iso
 vboxmanage modifyvm "win7" --vrde on
+vboxmanage modifyvm "win7" --cpus 4
 vboxheadless --startvm "win7"
 VBoxManage startvm "win7" --type headless
 
