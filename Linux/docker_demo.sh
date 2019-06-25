@@ -128,7 +128,7 @@ docker run -d \
 --volume /home/dexter/docker/jellyfin/config:/config \
 --volume /home/dexter/docker/jellyfin/cache:/cache \
 --volume /mnt/sdd1:/media/sdd1 \
---volume /mnt/sdc1/data/dexter/files/video/video_ht:/media/video_ht \
+--volume /mnt/sdf1:/media/sdf1 \
 --net=host \
 jellyfin/jellyfin
 
