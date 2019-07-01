@@ -109,12 +109,46 @@ svnadmin create --fs-type fsfs s-repo
 
 
 ############################ mariadb ############################
-docker run --name wordpress_db -p 3306 -e MYSQL_ROOT_PASSWORD=<pwd> -e MYSQL_DATABASE=wordpress -d mariadb
+docker run -d \
+--name wordpress_db \
+-p 3306:3306 \
+-e MYSQL_ROOT_PASSWORD=<root_pwd> \
+-e MYSQL_DATABASE=<schema> \
+mariadb
 ############################ mariadb ############################
 
 
 ############################ wordpress ############################
-docker run --name wordpress -e WORDPRESS_DB_PASSWORD=<pwd> --link wordpress_db:mysql -p <port>:80 -d wordpress
+docker run -d \
+--name wordpress \
+-p 980:80 \
+-p 303:443 \
+--volume /home/dexter/docker/wordpress:/home/wordpress/ \
+--volume /home/dexter/docker/cert/:/home/cert/ \
+wordpress
+
+# 启用apache2 ssl支持， 进入容器
+a2enmod ssl
+# 创建default-ssl.conf的链接， 进入容器
+ln -s ../sites-available/default-ssl.conf default-ssl.conf
+
+# 修改default-ssl.conf ssl配置
+ServerName = xxx
+SSLEngine = on
+SSLCertificateFile      /home/ca.crt
+SSLCertificateKeyFile   /home/ca.key
+
+# 将配置导入容器
+docker cp default-ssl.conf wordpress:/etc/apache2/sites-available
+
+# 重启容器
+docker restart wordpress
+
+# wordpress管理页
+# 安装Really Simple SSL
+# 修改settings -> general -> WordPress Address (URL)
+# 修改settings -> general -> Site Address (URL)
+# 为新的https地址 
 
 # 访问 http://<ip>:<port>
 # 安装向导页 http://<ip>:<port>/wp-admin/install.php
