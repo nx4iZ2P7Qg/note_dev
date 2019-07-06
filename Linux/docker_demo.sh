@@ -162,7 +162,7 @@ docker run -d \
 --volume /home/dexter/docker/jellyfin/config:/config \
 --volume /home/dexter/docker/jellyfin/cache:/cache \
 --volume /mnt/sdd1:/media/video \
---volume /mnt/sde1:/media/audio \
+--volume /mnt/sde1/audio:/media/audio \
 --volume /mnt/sdf1:/media/video_ht \
 --net=host \
 jellyfin/jellyfin
