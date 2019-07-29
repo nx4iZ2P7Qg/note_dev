@@ -57,3 +57,12 @@ firewall-cmd --list-all
 
 # 相关配置可以查看文件
 vi /etc/firewalld/zones/public.xml
+
+# 禁ping
+firewall-cmd --permanent --set-target=DROP
+# 禁用所有ICMP
+firewall-cmd --add-icmp-block-inversion
+# 如果需要打开某特定ICMP
+firewall-cmd --add-icmp-block=<icmptype>
+# 保存
+firewall-cmd --runtime-to-permanent
