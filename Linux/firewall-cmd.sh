@@ -59,6 +59,8 @@ firewall-cmd --list-all
 vi /etc/firewalld/zones/public.xml
 
 # 禁ping
+# 参考
+# https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/security_guide/sec-managing_icmp_requests
 firewall-cmd --permanent --set-target=DROP
 # 禁用所有ICMP
 firewall-cmd --add-icmp-block-inversion
