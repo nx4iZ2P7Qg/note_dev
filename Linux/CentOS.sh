@@ -33,3 +33,6 @@ hostname
 
 # 修改主机名并立即生效
 hostnamectl set-hostname nas-server
+
+# 公网IP
+curl ifconfig.me
