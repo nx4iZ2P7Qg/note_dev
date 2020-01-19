@@ -37,6 +37,16 @@ docker system df
 # 删除本地镜像
 docker image rm
 
+#批量删除image
+docker rmi $(docker images | grep "none" | awk '{print $3}')
+docker rmi $(docker images | awk '{print $3}')
+
+# 批量删除volume
+docker volume ls | awk '{print $2}' | while read i
+do
+    docker volume rm "${i}"
+done
+
 # 查看容器存储层的变动
 docker diff <c-id>
 
