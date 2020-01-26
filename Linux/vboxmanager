@@ -23,3 +23,6 @@ vboxmanage list vms
 http://download.virtualbox.org/virtualbox/6.0.0/
 # guest addition
 http://download.virtualbox.org/virtualbox/6.0.0/VBoxGuestAdditions_6.0.0.iso
+
+# 调整硬盘大小
+VBoxManage modifyhd "/home/dexter/virtualbox/win7.vdi" --resize 40960
