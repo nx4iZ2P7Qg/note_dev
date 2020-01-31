@@ -12,8 +12,14 @@ vboxmanage storageattach "win7" --storagectl "IDE Controller" --port 0 --device 
 vboxmanage modifyvm "win7" --vrde on
 vboxmanage modifyvm "win7" --cpus 4
 vboxheadless --startvm "win7"
+
+# 开机
 VBoxManage startvm "win7" --type headless
 
+# 关机
+VBoxManage controlvm "win7" poweroff soft
+
+# 删除
 vboxmanage unregistervm "win7" --delete
 
 vboxmanage list ostypes
