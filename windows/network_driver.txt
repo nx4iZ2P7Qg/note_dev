@@ -1,0 +1,11 @@
+# 挂载的驱动器内的文件经常跳出安全提示
+# https://superuser.com/questions/149056/disable-these-files-might-be-harmful-to-your-computer-warning
+# I found a fix by changing "internet options" -- so I guess Windows is detecting the "internet" as my own network.. sigh.
+# Click Start / Control Panel / Internet Options
+# Click Security tab.
+# Click Local Intranet
+# Click Sites button.
+# Click Advanced button.
+# Enter the IP Address of the other machine or server (wildcards are allowed) and click Add
+# Click Close, then OK, then OK again.
+# Disconnect, and reconnect the network drive
