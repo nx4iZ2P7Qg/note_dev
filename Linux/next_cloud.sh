@@ -206,6 +206,7 @@ Redirect 301 /.well-known/caldav /nextcloud/remote.php/dav
 -------------------------------------------------------------------------
 # opcache
 # 配好redis后，修改/etc/php.d/opcache.ini，逐条与页面对比
+systemctl restart httpd
 -------------------------------------------------------------------------
 # The “Referrer-Policy” HTTP header is not set to “no-referrer”
 # 修改nextcloud/.htaccess
