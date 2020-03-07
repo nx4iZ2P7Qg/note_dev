@@ -233,3 +233,9 @@ sudo -u apache php /var/www/nextcloud/occ db:convert-filecache-bigint
 # 修改/var/www/nextcloud/lib/private/App/AppStore/Fetcher/Fetcher.php
 # 'timeout' => 10,
 # 'timeout' => 600,
+
+# 安装app时
+# nextcloud cURL error 28: Operation timed out after 120000 milliseconds with
+# 修改/var/www/nextcloud/lib/private/Installer.php
+# 'timeout' => 120
+# 'timeout' => 600
