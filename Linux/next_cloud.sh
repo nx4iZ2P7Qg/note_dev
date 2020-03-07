@@ -226,3 +226,9 @@ sudo -u apache php /var/www/nextcloud/occ db:add-missing-indices
 -------------------------------------------------------------------------
 # missing a conversion to big int
 sudo -u apache php /var/www/nextcloud/occ db:convert-filecache-bigint
+
+# app无法安装，页面无法打开
+# setting -> logging中提示can not retrive apps.json, request timed out after 10 seconds
+# 修改/var/www/nextcloud/lib/private/App/AppStore/Fetcher/Fetcher.php
+# 'timeout' => 10,
+# 'timeout' => 600,
