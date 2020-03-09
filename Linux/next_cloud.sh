@@ -239,3 +239,11 @@ sudo -u apache php /var/www/nextcloud/occ db:convert-filecache-bigint
 # 修改/var/www/nextcloud/lib/private/Installer.php
 # 'timeout' => 120
 # 'timeout' => 600
+
+# docker
+# 修改上传文件大小
+# 修改php上传大小
+echo 'upload_max_filesize=10240M' >> /usr/local/etc/php/conf.d/memory-limit.ini
+echo 'post_max_size=10240M' >> /usr/local/etc/php/conf.d/memory-limit.ini
+# 修改nginx上传大小
+echo "client_max_body_size 0;" > proxy/conf.d/unrestricted_size.conf
