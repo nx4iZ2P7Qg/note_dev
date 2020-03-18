@@ -1,7 +1,7 @@
 # 查看可以安装的group包
 yum grouplist
 # 安装gnome环境，使用-y可以跳过确认
-yum install "GNOME Desktop"
+yum group install "GNOME Desktop"
 # 运行gnome
 startx
 
@@ -9,8 +9,8 @@ startx
 cd /run/media/dexter/
 # 安装VBoxAddition
 ./VBoxLinuxAddition.sh
-# 缺少gcc
-yum install gcc
+# 缺少依赖
+yum install kernel-headers  kernel-devel make -y gcc
 
 # 安装python3与yum
 http://blog.csdn.net/miaoqiucheng/article/details/73322937
@@ -36,3 +36,16 @@ hostnamectl set-hostname nas-server
 
 # 公网IP
 curl ifconfig.me
+
+# 安装go
+# 下载安装包
+# 解压到指定目录
+tar -C /usr/local -xzf go1.10.linux-amd64.tar.gz
+# 配置环境变量
+vim /etc/profile
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin
+# 使配置生效
+source /etc/profile
+# 验证
+go version
