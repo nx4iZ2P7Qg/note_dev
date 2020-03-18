@@ -10,7 +10,9 @@ cd /run/media/dexter/
 # 安装VBoxAddition
 ./VBoxLinuxAddition.sh
 # 缺少依赖
+yum update kernel -y
 yum install kernel-headers  kernel-devel make -y gcc
+init 6
 
 # 安装python3与yum
 http://blog.csdn.net/miaoqiucheng/article/details/73322937
@@ -49,3 +51,7 @@ export PATH=$PATH:$GOROOT/bin
 source /etc/profile
 # 验证
 go version
+
+# 安装五笔
+yum install ibus ibus-table
+yum install ibus ibus-table-wubi
