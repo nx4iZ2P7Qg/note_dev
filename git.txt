@@ -42,3 +42,6 @@ git push -u origin master
 # git clone项目时提示filename too long
 # 使用admin开启git bash，配置成可以支持长文件名
 git config --system core.longpaths true
+
+# Peer's certificate issuer has been marked as not trusted by the user.
+git config http.sslVerify false
