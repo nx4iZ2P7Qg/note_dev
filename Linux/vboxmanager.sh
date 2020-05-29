@@ -22,7 +22,10 @@ VBoxManage controlvm "win7" poweroff soft
 # 删除
 vboxmanage unregistervm "win7" --delete
 
+# 查看支持系统
 vboxmanage list ostypes
+
+# 查看存在的虚机
 vboxmanage list vms
 
 # ftp
@@ -32,3 +35,9 @@ vboxmanage list vms
 
 # 调整硬盘大小
 VBoxManage modifyhd "/home/dexter/virtualbox/win7.vdi" --resize 40960
+
+# 调整拖放
+vboxmanage modifyvm "win7" --draganddrop bidirectional
+
+# 调整剪贴板
+vboxmanage modifyvm "win7" --clipboard-mode bidirectional
