@@ -1,14 +1,5 @@
 #!/usr/bin/env bash
 
-# 以root登录
-su
-
-# 查看备份硬盘的smart status
-smartctl -A /dev/sd.
-
-# 查看备份硬盘的bit rot情况，需要btrfs硬盘格式
-btrfs device stats /dev/sd.1
-
 # 查看具体文件的操作
 rsync -n -a --info=ALL -H -h -u --delete /mnt/sdc1/ /mnt/usb1/
 # 去掉-n正式运行

@@ -12,12 +12,6 @@ systemctl start transmission-daemon
 systemctl stop transmission-daemon
 # 修改以下配置
 vi /var/lib/transmission/.config/transmission-daemon/settings.json
-"rpc-authentication-required": true,
-"rpc-enabled": true,
-"rpc-password": "123",
-"rpc-username": "abc",
-"rpc-whitelist-enabled": true,
-"rpc-whitelist": "127.0.0.1,10.0.0.*",
 # 添加防火墙规则
 firewall-cmd --permanent --zone=public --add-port 9091/tcp
 firewall-cmd --permanent --zone=public --add-port 9091/udp
