@@ -55,3 +55,10 @@ go version
 # 安装五笔
 yum install ibus ibus-table
 yum install ibus ibus-table-wubi
+
+# 查看CPU个数
+cat /proc/cpuinfo| grep "physical id"| sort| uniq| wc -l
+# 查看核心数
+cat /proc/cpuinfo| grep "cpu cores"| uniq
+# 查看逻辑核心数
+cat /proc/cpuinfo| grep "processor"| wc -l
