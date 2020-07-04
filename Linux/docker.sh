@@ -1,19 +1,32 @@
 # 安装docker
-yum install -y yum-utils \
-  device-mapper-persistent-data \
-  lvm2
-yum-config-manager \
-    --add-repo \
-    https://download.docker.com/linux/centos/docker-ce.repo
+----------------------------------------------------------------------------------------------
+yum install -y yum-utils device-mapper-persistent-data lvm2
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 yum install docker-ce
 systemctl start docker
 docker --version
 
 安装docker-compose
+----------------------------------------------------------------------------------------------
 curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 
+# /etc/docker/daemon.json
+----------------------------------------------------------------------------------------------
+# 修改 docker 默认数据位置，包含镜像，容器，网络
+# docker 默认位置是 /var/lib/docker
+{
+  "data-root": "/root/data/docker"
+}
+# 镜像源
+{
+  "registry-mirrors": ["http://hub-mirror.c.163.com"]
+}
+# 跳过自签证书
+{
+  "insecure-registries": ["192.168.10.203"]
+}
 
 #!/usr/bin/env bash
 
@@ -44,8 +57,9 @@ docker port 1f5bb2af8b0d 5000
 # 查看docker底层信息
 docker inspect 1f5bb2af8b0d
 
+# image
+----------------------------------------------------------------------------------------------
 # 列出本地主机上镜像
-docker images
 docker image ls
 
 # 镜像、容器、数据卷所占用的空间
@@ -58,6 +72,8 @@ docker image rm
 docker rmi $(docker images | grep "none" | awk '{print $3}')
 docker rmi $(docker images | awk '{print $3}')
 
+# volume
+----------------------------------------------------------------------------------------------
 # 批量删除volume
 docker volume ls | awk '{print $2}' | while read i
 do
