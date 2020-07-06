@@ -57,6 +57,9 @@ docker port 1f5bb2af8b0d 5000
 # 查看docker底层信息
 docker inspect 1f5bb2af8b0d
 
+# 批量删除容器
+docker rm -f $(docker ps -a | grep "Exited" | awk '{print $1}')
+
 # image
 ----------------------------------------------------------------------------------------------
 # 列出本地主机上镜像
