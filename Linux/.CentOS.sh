@@ -1,9 +1,23 @@
+# 修改CentOS默认yum源
+-----------------------------------------------------------------------------------------
+# 备份系统自带yum源配置文件/etc/yum.repos.d/*
+
+# 下载ailiyun的yum源配置文件到/etc/yum.repos.d/
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+
+# 生成缓存
+yum makecache
+
+
+
 # 查看可以安装的group包
 yum grouplist
 # 安装gnome环境，使用-y可以跳过确认
 yum group install "GNOME Desktop"
 # 运行gnome
 startx
+
+
 
 # 挂载点
 cd /run/media/dexter/
@@ -14,14 +28,15 @@ yum update kernel -y
 yum install kernel-headers  kernel-devel make -y gcc
 init 6
 
+
+
 # 安装python3与yum
 http://blog.csdn.net/miaoqiucheng/article/details/73322937
 
 # 重启gnome
 alt + F2, r
 
-# 查看网络情况
-ip addr
+
 
 # 修改未启动的网卡
 vi /etc/sysconfig/network-scripts/ifcfg-eno1
