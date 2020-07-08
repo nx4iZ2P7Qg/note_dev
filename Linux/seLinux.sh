@@ -1,7 +1,7 @@
 sestatus # 查看selinux状态
-setenforce=0 # 暂时关闭se
-setenforce=1 # 暂时开启se
-sed -i 's/^SELINUX=.*/SELINUX=diasble/' /etc/selinux/config # 关闭selinux，重启生效
+setenforce 0 # 暂时关闭se
+setenforce 1 # 暂时开启se
+sed -i 's/^SELINUX=.*/SELINUX=disabled/' /etc/selinux/config # 关闭selinux，重启生效
 # SELinux 遵从最小权限，strict（严格型）编写很困难，会为系统管理员及用户带来使用不便
 # CentOS预置政策是targeted，CentOS4定义了15个目标，CentOS5超过200个，其他进程，用户程式和自制程式都在unConfined区域运行
 # 不纳入se的保护范围
