@@ -1,0 +1,14 @@
+# 下载相关 nodejs 文件
+mkdir -p /usr/local/lib/nodejs
+tar -xJvf node-$VERSION-$DISTRO.tar.xz -C /usr/local/lib/nodejs 
+
+# ~/.bash_profile 中添加
+# Nodejs
+echo 'export PATH=/usr/local/lib/nodejs/node-$VERSION-$DISTRO/bin:$PATH' >> ~/.bash_profile
+
+# 重新登录
+
+# 检测
+node -v
+npm version
+npx -v
