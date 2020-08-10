@@ -1,0 +1,2 @@
+# 支持模拟器游戏修改
+  Edit > Settings > Scan Settings > MEM_MAPPED
