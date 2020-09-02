@@ -28,11 +28,11 @@ cd /run/media/dexter/
 
 
 # 安装python3与yum
-http://blog.csdn.net/miaoqiucheng/article/details/73322937
+# http://blog.csdn.net/miaoqiucheng/article/details/73322937
 
 
 # 重启gnome
-alt + F2, r
+# alt + F2, r
 
 
 # 修改未启动的网卡
@@ -58,16 +58,7 @@ curl ifconfig.me
 
 # 安装go
 # 下载安装包
-# 解压到指定目录
-tar -C /usr/local -xzf go1.10.linux-amd64.tar.gz
-# 配置环境变量
-vim /etc/profile
-export GOROOT=/usr/local/go
-export PATH=$PATH:$GOROOT/bin
-# 使配置生效
-source /etc/profile
-# 验证
-go version
+# https://golang.org/dl/
 
 
 # 安装五笔
