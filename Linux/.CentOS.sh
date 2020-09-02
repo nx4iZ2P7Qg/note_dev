@@ -1,58 +1,60 @@
-# 修改CentOS默认yum源
------------------------------------------------------------------------------------------
+# 默认yum源
 # 备份系统自带yum源配置文件/etc/yum.repos.d/*
-
 # 下载ailiyun的yum源配置文件到/etc/yum.repos.d/
 wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
-
 # 生成缓存
 yum makecache
 
 
-
-# 查看可以安装的group包
-yum grouplist
-# 安装gnome环境，使用-y可以跳过确认
-yum group install "GNOME Desktop"
-# 运行gnome
+# 安装 gnome
+# 查看可以安装的 group 包
+yum group list
+# gnome
+yum groupinstall "Server with GUI"
+# 运行 gnome
 startx
 
 
-
+# 安装 VirtualBox Guest Additions
+# 依赖
+yum update kernel -y
+yum install elfutils-libelf-devel
+yum install kernel-headers  kernel-devel make gcc
+init 6
 # 挂载点
 cd /run/media/dexter/
 # 安装VBoxAddition
 ./VBoxLinuxAddition.sh
-# 缺少依赖
-yum update kernel -y
-yum install kernel-headers  kernel-devel make -y gcc
-init 6
-
 
 
 # 安装python3与yum
 http://blog.csdn.net/miaoqiucheng/article/details/73322937
 
+
 # 重启gnome
 alt + F2, r
-
 
 
 # 修改未启动的网卡
 vi /etc/sysconfig/network-scripts/ifcfg-eno1
 # 修改ONBOOT=no为yes，ifcfg-eno1名字可能会不同
 
+
 # 如果BOOTPROTO=dhcp，重新启动网络服务后就可以拿到ip
 systemctl restart network
+
 
 # 查看主机名
 hostname
 
+
 # 修改主机名并立即生效
 hostnamectl set-hostname nas-server
 
+
 # 公网IP
 curl ifconfig.me
+
 
 # 安装go
 # 下载安装包
@@ -67,9 +69,11 @@ source /etc/profile
 # 验证
 go version
 
+
 # 安装五笔
 yum install ibus ibus-table
 yum install ibus ibus-table-wubi
+
 
 # 查看CPU个数
 cat /proc/cpuinfo| grep "physical id"| sort| uniq| wc -l
