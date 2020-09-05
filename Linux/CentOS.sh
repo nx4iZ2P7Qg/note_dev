@@ -16,15 +16,11 @@ startx
 
 
 # 安装 VirtualBox Guest Additions
-# 依赖
-yum update kernel -y
-yum install elfutils-libelf-devel
-yum install kernel-headers  kernel-devel make gcc
-init 6
-# 挂载点
-cd /run/media/dexter/
-# 安装VBoxAddition
-./VBoxLinuxAddition.sh
+dnf install epel-release
+dnf install gcc make perl kernel-devel kernel-headers bzip2 dkms
+dnf update kernel-*
+reboot
+./VBoxLinuxAdditions.run
 
 
 # 安装python3与yum
