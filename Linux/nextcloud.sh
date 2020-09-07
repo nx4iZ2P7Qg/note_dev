@@ -247,3 +247,11 @@ echo 'upload_max_filesize=10240M' >> /usr/local/etc/php/conf.d/memory-limit.ini
 echo 'post_max_size=10240M' >> /usr/local/etc/php/conf.d/memory-limit.ini
 # 修改nginx上传大小
 echo "client_max_body_size 0;" > proxy/conf.d/unrestricted_size.conf
+
+# 手动升级
+# /var/www/nextcloud/updater/ 目录下
+sudo -u apache php updater.phar
+# 可以提前将新版本 zip 下载好，如果下载太慢就退出 bash，将文件复制到下载处
+cp /mnt/sdb1/vm/td/nextcloud- /mnt/sdc1/data/updater-oce6hmiaiv9e/downloads/
+# 修改 start 为 end，重新运行 update 就可以跳过
+vi /var/www/nextcloud/data/updater-oce6hmiaiv9e/.step
