@@ -40,4 +40,4 @@ VBoxManage modifyhd "/home/dexter/virtualbox/win7.vdi" --resize 40960
 vboxmanage modifyvm "win7" --draganddrop bidirectional
 
 # 调整剪贴板
-vboxmanage modifyvm "win7" --clipboard-mode bidirectional
+vboxmanage modifyvm "win7" --clipboard bidirectional
