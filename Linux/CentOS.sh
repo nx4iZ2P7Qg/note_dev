@@ -79,3 +79,5 @@ cat /proc/cpuinfo| grep "processor"| wc -l
 # IPADDR=192.168.13.241
 # GATEWAY=192.168.13.1
 # NETMASK=255.255.255.0
+# 访问外网还需要添加 dns
+echo nameserver 223.5.5.5 >> /etc/resolv.conf
