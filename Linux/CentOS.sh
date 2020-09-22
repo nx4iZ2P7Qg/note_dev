@@ -68,3 +68,14 @@ cat /proc/cpuinfo| grep "physical id"| sort| uniq| wc -l
 cat /proc/cpuinfo| grep "cpu cores"| uniq
 # 查看逻辑核心数
 cat /proc/cpuinfo| grep "processor"| wc -l
+
+
+# 设置静态IP
+# vi /etc/sysconfig/network-scripts/ifcfg-enp0s3
+# 变更
+# BOOTPROTO="static"
+# ONBOOT="yes"
+# 添加
+# IPADDR=192.168.13.241
+# GATEWAY=192.168.13.1
+# NETMASK=255.255.255.0
