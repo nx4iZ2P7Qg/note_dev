@@ -28,14 +28,10 @@
     firewall-cmd --permanent --zone=public --add-service=postgresql
     firewall-cmd --reload
 # 数据备份
-    # 改变命令执行路径
-    cd /mnt/sdb1/net_disk/
-    # 创建文件
-    touch /mnt/sdb1/net_disk/pg_dump.sql
     # 修改权限
-    chown postgres:postgres /mnt/sdb1/net_disk/pg_dump.sql
+    chown postgres:postgres /mnt/sde1/backup/server/psql/pg_dump.sql
     # dump
-    sudo -u postgres pg_dump -c -C -f /mnt/sdb1/net_disk/pg_dump.sql --column-inserts df
+    sudo -u postgres pg_dump -c -C -f /mnt/sde1/backup/server/psql/pg_dump.sql --column-inserts df
 # 运行sql
     psql -h localhost -d df -U dexter -c "select * from t_menstrul_cycle"
     psql -h localhost -d df -U dexter -c "insert into t_menstrul_cycle values(41, '2019-04-14', 0)"
