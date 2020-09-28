@@ -1,0 +1,69 @@
+# spring boot tutorial
+    https://spring.io/projects/spring-boot
+    https://docs.spring.io/spring-boot/docs/2.1.7.RELEASE/reference/html/
+    https://github.com/spring-projects/spring-boot/tree/v2.1.7.RELEASE/spring-boot-samples
+
+# spring cloud tutorial
+    https://spring.io/projects/spring-cloud
+    https://cloud.spring.io/spring-cloud-static/Greenwich.SR2/
+    
+    https://github.com/forezp/SpringCloudLearning
+    
+    https://github.com/spring-cloud
+
+# spring security
+    https://spring.io/projects/spring-security
+    https://docs.spring.io/spring-security/site/docs/5.1.6.RELEASE/reference/htmlsingle/
+
+# vue
+    https://vuejs.org/v2/guide/
+
+# vuex
+    https://vuex.vuejs.org/zh/guide/
+
+# iview
+    https://github.com/iview/iview
+    https://iviewui.com/docs/guide/install-en
+    https://iviewui.com/docs/guide/install
+
+# iview-admin
+    https://github.com/iview/iview-admin
+    https://lison16.github.io/iview-admin-doc/#/
+
+# ant-design
+    https://ant.design/docs/spec/introduce-cn
+
+# google guava
+    https://github.com/google/guava/wiki
+    
+# java web
+    https://github.com/Exrick/x-boot
+    
+# python
+    https://github.com/jackfrued/Python-100-Days
+
+# javascript
+    https://developer.mozilla.org/zh-CN/
+
+# ES2015
+    https://babeljs.io/docs/en/learn
+    https://es6.ruanyifeng.com/
+
+    # axios
+        https://github.com/axios/axios
+
+# common-io
+    http://commons.apache.org/proper/commons-io/
+
+
+值得关注的WEB UI
+    ANTD PRO VUE            https://pro.loacg.com/
+    vue-Element-Admin       https://github.com/PanJiaChen/vue-element-admin
+    tabler
+    Gentelella
+    ng2-admin
+    ant-design-pro
+    blur-admin
+    vue-admin
+    iview-admin
+    material-dashboard
