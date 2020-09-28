@@ -1,0 +1,10 @@
+# 多网络适配器的情况下，指定优先级
+
+# 查看网络适配器
+Get-NetIPInterface
+
+# 修改指定适配器的优先级，小数字代表高优先
+Set-NetIPInterface -InterfaceIndex 21 -InterfaceMetric 10
+
+# 还原为自动配置
+Set-NetIPInterface -InterfaceIndex 21 -AutomaticMetric enabled
