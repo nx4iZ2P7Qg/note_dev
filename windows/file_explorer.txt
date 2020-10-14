@@ -1,4 +1,4 @@
-# 挂载的驱动器内的文件经常跳出安全提示
+# 挂载网络驱动器内，打开 .zip 文件时，取消跳出的安全提示
 # https://superuser.com/questions/149056/disable-these-files-might-be-harmful-to-your-computer-warning
 # I found a fix by changing "internet options" -- so I guess Windows is detecting the "internet" as my own network.. sigh.
 # Click Start / Control Panel / Internet Options
@@ -9,3 +9,8 @@
 # Enter the IP Address of the other machine or server (wildcards are allowed) and click Add
 # Click Close, then OK, then OK again.
 # Disconnect, and reconnect the network drive
+
+
+# 保证所有文件夹，在详细信息视图的情况下，name 列都有相同的宽度，并且足够宽以完整显示大多数文件名
+# 任意进入某文件夹，将 name 列拉到合适的宽度，或者在 name 上右键，"其他"，进行细粒度调整列宽
+# 菜单"查看"，"选项"，"查看"标签页内，"应用到文件夹"
