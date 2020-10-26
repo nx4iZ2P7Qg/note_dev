@@ -1,1 +1,1 @@
-# 压缩文件时，需要在 Parameters 中添加 cu 参数，否则不支持 unicode 文件名
+# 压缩 zip 时，需要在 Parameters 中添加 cu 参数，否则不支持 unicode 文件名
