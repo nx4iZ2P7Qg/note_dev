@@ -1,0 +1,2 @@
+# 在任务列表中找字符
+tasklist | findstr -i sql
