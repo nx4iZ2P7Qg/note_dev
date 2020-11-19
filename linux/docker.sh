@@ -38,6 +38,10 @@ docker-compose --version
   "insecure-registries": ["192.168.10.203"]
 }
 
+# 常见问题
+# Failed to enable unit: Unit file /usr/lib/systemd/system/containerd.service is masked.
+# 删除 containerd.service，从正常机器上复制一份过来
+
 #!/usr/bin/env bash
 
 sudo usermod -aG docker <username>
