@@ -41,6 +41,7 @@ docker-compose --version
 # 常见问题
 # Failed to enable unit: Unit file /usr/lib/systemd/system/containerd.service is masked.
 # 删除 containerd.service，从正常机器上复制一份过来
+# https://blog.ruanbekker.com/blog/2017/12/09/unmask-a-masked-service-in-systemd/
 
 #!/usr/bin/env bash
 
