@@ -10,3 +10,6 @@ sed '3,4c content'
 sed -n '1,2p'
 # 行内替换
 sed 's/aaa/bbb/'
+
+# 直接修改文件
+sed -i 's/xxx/yyy/g'
