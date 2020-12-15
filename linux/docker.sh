@@ -75,6 +75,16 @@ docker inspect 1f5bb2af8b0d
 # 批量删除容器
 docker rm -f $(docker ps -a | grep "Exited" | awk '{print $1}')
 
+# 镜像导出
+docker save -o nginx.tar nginx:latest
+# 镜像导入
+docker load -i nginx.tar
+
+# 容器导出
+docker export -o nginx-test.tar nginx-test
+# 容器导入
+docker import nginx-test.tar nginx:imp
+
 # image
 ----------------------------------------------------------------------------------------------
 # 列出本地主机上镜像
