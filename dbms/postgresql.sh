@@ -35,3 +35,6 @@
 # 运行sql
     psql -h localhost -d df -U dexter -c "select * from t_menstrul_cycle"
     psql -h localhost -d df -U dexter -c "insert into t_menstrul_cycle values(41, '2019-04-14', 0)"
+
+# docker postgres
+    docker exec -it postgres psql -h localhost -d df -U postgres -c "select * from pg_tables where schemaname = 'public'"
