@@ -81,3 +81,7 @@ cat /proc/cpuinfo| grep "processor"| wc -l
 # NETMASK=255.255.255.0
 # 访问外网还需要添加 dns
 echo nameserver 223.5.5.5 >> /etc/resolv.conf
+# centos7 生效
+systemctl restart network
+# centos8 生效
+nmcli c up enp0s3
