@@ -31,10 +31,14 @@
     # 修改权限
     chown postgres:postgres /mnt/sde1/backup/server/psql/pg_dump.sql
     # dump
-    sudo -u postgres pg_dump -c -C -f /mnt/sde1/backup/server/psql/pg_dump.sql --column-inserts df
+    pg_dump -U postgres -c -C -f /mnt/sde1/backup/server/psql/pg_dump.sql --column-inserts df
 # 运行sql
     psql -h localhost -d df -U dexter -c "select * from t_menstrul_cycle"
     psql -h localhost -d df -U dexter -c "insert into t_menstrul_cycle values(41, '2019-04-14', 0)"
 
-# docker postgres
+# docker 查询
     docker exec -it postgres psql -h localhost -d df -U postgres -c "select * from pg_tables where schemaname = 'public'"
+# docker 备份
+    docker exec -it postgres /bin/bash
+    pg_dump -U postgres -c -C -f pg_dump.sql --column-inserts df
+    docker cp postgres:/pg_dump.sql /mnt/d3/backup/server/psql/pg_dump_2021-04-11.sql
