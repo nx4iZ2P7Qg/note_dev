@@ -1,0 +1,8 @@
+ # 查看 node label
+kubectl get nodes --show-labels
+
+# node 宽显示
+kubectl get node -A --output=wide
+
+# pod 宽显示
+kubectl get pod -A --output=wide
