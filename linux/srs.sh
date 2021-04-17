@@ -6,7 +6,13 @@
 # 项目
 #    https://github.com/ossrs/srs
 # 运行
-docker run -p 1935:1935 -p 1985:1985 -p 8080:8080 ossrs/srs:3
+docker run \
+    --name srs \
+    -d \
+    -p 1935:1935 \
+    -p 1985:1985 \
+    -p 8080:8080 \
+    ossrs/srs:3
 
 # 将本地数据推向服务器
 # obs设置流
