@@ -14,3 +14,8 @@
 # 保证所有文件夹，在详细信息视图的情况下，name 列都有相同的宽度，并且足够宽以完整显示大多数文件名
 # 任意进入某文件夹，将 name 列拉到合适的宽度，或者在 name 上右键，"其他"，进行细粒度调整列宽
 # 菜单"查看"，"选项"，"查看"标签页内，"应用到文件夹"
+
+
+# 锁屏图片
+# %USERPROFILE%\AppData\Local\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets
+# 复制到别处，添加扩展名 .jpg
