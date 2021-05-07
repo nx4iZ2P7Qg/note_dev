@@ -42,3 +42,7 @@
     docker exec -it postgres /bin/bash
     pg_dump -U postgres -c -C -f pg_dump.sql --column-inserts df
     docker cp postgres:/pg_dump.sql /mnt/d3/backup/server/psql/pg_dump_2021-04-11.sql
+
+# docker 还原
+    docker cp /mnt/d3/backup/server/psql/pg_dump_2021-05-07.sql postgres:/pg_dump.sql
+    docker exec -it postgres psql -U postgres -f pg_dump.sql
