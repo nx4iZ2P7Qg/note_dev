@@ -1,1 +1,0 @@
-alias lg='ls -al | grep'
