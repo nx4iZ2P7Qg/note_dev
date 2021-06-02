@@ -1,9 +1,12 @@
 # debian 安装
 apt-get install btrfs-tools
 
-# 查看bit rot情况，corruption_errs
-btrfs device stats /mnt/d1
 
+# mkfs.btrfs
+# https://btrfs.wiki.kernel.org/index.php/Manpage/mkfs.btrfs
+
+
+# btrfs scrub
 # 完整性检查，scrub btrfs filesystem, verify block checksums
 # https://btrfs.wiki.kernel.org/index.php/Manpage/btrfs-scrub
 # 官方建议每月运行
@@ -17,9 +20,21 @@ btrfs scrub status mnt
 # btrfs scrub 之后检查日志
 # https://wiki.archlinux.org/title/Identify_damaged_files
 journalctl --output=cat --grep='BTRFS .* i/o error' | sort | uniq | less
+# 或者
+dmesg
 
 
+# btrfs check
+# 在正式使用前，可能需要做很多其他工作
+# https://btrfs.wiki.kernel.org/index.php/Btrfsck
+# 运行前最好 unmount
+btrfs check --check-data-csum --progress --readonly /dev/sdb
 
+
+# btrfs device
+# https://btrfs.wiki.kernel.org/index.php/Manpage/btrfs-device
+# 查看bit rot情况，corruption_errs
+btrfs device stats /mnt/d1
 
 [root@localhost ~]# lsblk
 NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
@@ -34,9 +49,14 @@ sdd           8:48   0    8G  0 disk
 sde           8:64   0   16G  0 disk
 sr0          11:0    1 1024M  0 rom
 
--f 是强制，会清除掉已有的文件系统
--d 是 data
--m 是 metadata
+
+
+设备注册到内核
+btrfs device scan
+
+-f  强制，会清除掉已有的文件系统
+-d  data
+-m  metadata
 [root@localhost ~]# mkfs.btrfs -f -d raid0 -m raid1 /dev/sdb /dev/sdc /dev/sdd
 btrfs-progs v5.4
 See http://btrfs.wiki.kernel.org for more information.
@@ -70,9 +90,6 @@ btrfs balance start -dconvert=raid1 -mconvert=raid1 /home
 mount /dev/sdb mnt/
 
 写入数据后，会发现分别写入3个虚拟硬盘，大小差不多
-
-重启后需要扫描
-btrfs device scan
 
 打印出本机 btrfs 信息
 btrfs filesystem show
