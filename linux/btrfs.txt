@@ -4,7 +4,19 @@ apt-get install btrfs-tools
 # 查看bit rot情况，corruption_errs
 btrfs device stats /mnt/d1
 
-# 完整性检查
+# 完整性检查，scrub btrfs filesystem, verify block checksums
+# https://btrfs.wiki.kernel.org/index.php/Manpage/btrfs-scrub
+# 官方建议每月运行
+# 设备带宽占用为80%，但优先级为 idle，不会很影响正常操作
+# scrub status 被记录在 /var/lib/btrfs/ 名称为 scrub.status.UUID
+btrfs scrub cancel mnt
+btrfs scrub resume mnt
+btrfs scrub start mnt
+btrfs scrub status mnt
+# btrfs scrub 速度约 1小时0.6T
+# btrfs scrub 之后检查日志
+# https://wiki.archlinux.org/title/Identify_damaged_files
+journalctl --output=cat --grep='BTRFS .* i/o error' | sort | uniq | less
 
 
 
