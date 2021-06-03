@@ -1,0 +1,15 @@
+https://developer.mozilla.org/en-US/docs/Web/JavaScript
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
+
+https://wangdoc.com/javascript/
+
+https://leanpub.com/understandinges6/read#leanpub-auto-about-this-book
+
+https://segmentfault.com/a/1190000004365693
+
+https://segmentfault.com/a/1190000004368132
+
+http://www.ruanyifeng.com/blog/javascript/
+
+http://es6.ruanyifeng.com/
