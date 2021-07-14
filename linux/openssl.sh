@@ -15,3 +15,6 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out 
 
 # 使用私钥及证书生成pkcs #12
 openssl pkcs12 -export -out certificate.pfx -inkey privateKey.key -in certificate.crt
+
+# 使用私钥生成 pkcs#8 加密私钥
+openssl pkcs8 -in privateKey.key -topk8 -out pk8key.pem
